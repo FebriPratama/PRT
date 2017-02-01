@@ -1,0 +1,26 @@
+<ion-view title="Daftar Usaha">
+<ion-nav-buttons side="right" class="has-header" > 
+    <button class="button button-icon icon ion-android-add" ui-sref="app.user-usaha-new"></button>
+  </ion-nav-buttons>
+  <ion-content class="has-header" padding="true">
+    
+    <ion-list>
+
+      <div class="item item-divider text-center" ng-if="!usahas.length">
+        Belum ada usaha, buat satu !
+      </div>
+
+      <ion-item class="item-thumbnail-left" id="usaha-list-item2" ng-repeat="data in usahas" ng-click="loginBrand(data)" >
+        <img ng-src="https://dummyimage.com/600x400/000/fff&text=" ng-if="!data.img_usaha"> 
+        <img ng-src="{{ApiEndpoint.main+'img/'+data.img_usaha}}" ng-if="data.img_usaha">  
+        <h2>{{ data.nama_usaha }}</h2>
+        <p>Kategori : {{ data.kategori_usaha }}</p>
+        <ion-option-button class="button-assertive ion-trash-a" ng-click="deleteUsaha(data)"> &nbsp;Delete </ion-option-button>
+         <ion-option-button class="button-calm ion-edit" ng-click="editUsaha(data)"> &nbsp;Edit </ion-option-button> 
+      </ion-item>
+
+    </ion-list>
+
+  </ion-content>
+</ion-view>
+

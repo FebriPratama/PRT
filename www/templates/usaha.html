@@ -1,0 +1,25 @@
+<ion-view title="Usaha" id="usaha" style="">
+
+  <ion-nav-buttons side="right" class="has-header" > 
+    <button class="button button-icon icon ion-android-add" ui-sref="tambahUsaha"></button>
+  </ion-nav-buttons>
+  <ion-content padding="true" class="has-header">
+    <ion-list can-swipe="true" >
+
+      <ion-item class="item-thumbnail-left" id="usaha-list-item2" ui-sref="tabrental" >     
+        <h2>Nama Usaha</h2>
+        <p>Kategori : Rental</p>
+        <ion-option-button class="button-assertive icon ion-trash-a "> Delete </ion-option-button>
+         <ion-option-button class="button-blue icon ion-edit" ui-sref="editUsaha"> Edit </ion-option-button> 
+      </ion-item>
+
+      <ion-item class="item-thumbnail-left" id="usaha-list-item6" ui-sref="tabtravel" style="">
+        <h2>Nama Usaha</h2>
+        <p>Kategori : Travel</p>
+      </ion-item>
+
+    </ion-list>
+  </ion-content>
+
+</ion-view>
+

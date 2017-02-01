@@ -1,0 +1,250 @@
+<style type="text/css">
+    
+    .ion-email:before {
+        content: url('icons/login.png') !important;
+      }
+      .ion-chatbubble-working:before {
+        content: url('icons/contract.png') !important;
+      }
+    .ion-speakerphone1:before {
+          content: url('icons/store.png') !important;
+        }
+    .ion-log-out:before {
+          content: url('icons/logout.png') !important;
+        }
+
+    .ion-ios-pulse-strong:before {
+        content: url('icons/text-lines.png') !important;
+      }
+
+     .ion-ios-pulse-strong1:before {
+        content: url('icons/signs.png') !important;
+      }
+
+      .ion-ios-pulse-strong2:before {
+        content: url('icons/location.png') !important;
+      }
+
+      .gambar-feed {
+          display: block;
+          margin: auto;
+          width: 95%;
+      }
+
+</style>
+
+<ion-pane>
+
+  <ion-side-menus enable-menu-with-back-views="false">
+    <ion-side-menu-content drag-content="false">
+      <ion-nav-bar class="bar-positive" align-title="center">
+          <ion-nav-back-button class="no-text"></ion-nav-back-button>
+          <ion-nav-buttons side="left">
+              <button class="button button-icon button-clear ion-android-menu" menu-toggle="left"></button>
+          </ion-nav-buttons>
+      </ion-nav-bar>
+      <ion-nav-view name="menuContent"></ion-nav-view>
+    </ion-side-menu-content>
+    
+    <ion-side-menu side="left">
+        <ion-header-bar align-title="center" class=" padding-top" style="min-height:150px;background:#1A237E;color:#fff;">
+            <div class="row">
+              <div class="col-33 text-center">
+
+                <img src="https://dummyimage.com/600x400/000/fff&text=-y" style="width:50px;height:50px;border-radius:50%;">
+              </div>
+              <div class="col-67 ">           
+                <p>
+                  <b>Login as : {{ auth.isUserLogin() ? auth.getUser().nama_pengelola : 'Guest' }}</b><br>
+                  {{ auth.getUser().email ? auth.getUser().email : 'Not Log in' }}
+                </p>                   
+              </div>
+           
+              </div>
+            </div>            
+        </ion-header-bar>
+        <ion-content class="stable-bg has-expanded-header" style="margin-top:50px;" scroll="false">
+          <div class="list">
+            <div class="item item-divider">
+              Account
+            </div>
+            <div ng-if="!auth.isUserLogin()">
+              <a class="item item-icon-left" ui-sref="login" menu-close>
+                <i class="icon ion-email"></i>
+                Login
+              </a>
+              <a class="item item-icon-left" href="#">
+                <i class="icon ion-chatbubble-working"></i>
+                Register
+              </a>
+            </div>
+            <div ng-if="auth.isUserLogin()">
+              <a class="item item-icon-left" ui-sref="app.user-usaha" menu-close>
+                <i class="icon ion-speakerphone1"></i>
+                Usaha
+              </a>
+              <a class="item item-icon-left " ng-click="logout()">
+                <i class="icon ion-log-out"></i>
+                Logout
+              </a>
+            </div>
+
+             <div class="item item-divider">
+              Umum
+            </div>
+             <a class="item item-icon-left" ui-sref="app.lihatInfo" menu-close>
+                <i class="icon ion-ios-pulse-strong"></i>
+                Info Usaha 
+              </a>
+             <a class="item item-icon-left" ui-sref="app.umum-lihatdaftar" menu-close>
+                <i class="icon ion-ios-pulse-strong1"></i>
+                Lihat daftar Rental & Travel
+              </a>
+              <a class="item item-icon-left" ui-sref="app.umum-lihatsekitar" menu-close>
+                <i class="icon ion-ios-pulse-strong2"></i>
+                Cari Lokasi
+              </a>
+            </div>
+          </div>
+        </ion-content>
+    </ion-side-menu>
+  </ion-side-menus>
+</ion-pane>
+
+<script id="modal-umum-detail-travel.html" type="text/ng-template">
+  <ion-modal-view>
+    <ion-header-bar class="bar-positive">
+      <h1 class="title">Detail {{ tmp.tujuan_itemtravel }}</h1>
+      <div class="buttons;float:"left";" >
+        <button class="button button-icon button-clear ion-ios-arrow-back" ng-click="modalTravel.hide()"></button>
+      </div>
+    </ion-header-bar> 
+    <ion-content>
+
+      <div class="list">
+        <div style="margin: 0px;  text-align: center;">
+          <img src="https://dummyimage.com/600x400/000/fff&text=GambarHaha" ng-if="!tmp.photos.length"> 
+          <img ng-src="{{ApiEndpoint.main+'img/'+photo.nama_gambar}}" ng-if="tmp.photos.length" ng-show="$index==0" ng-repeat="photo in tmp.photos">
+        </div>
+        <label class="item item-input" id="detilItemTravel-input46">
+          <span class="input-label">Tujuan : {{ tmp.tujuan_itemtravel }}</span>
+        </label>
+        <label class="item item-input" id="detilItemTravel-input47">
+          <span class="input-label">Kendaraan : {{ tmp.kendaraan_itemtravel }}</span>
+        </label>
+        <label class="item item-input" id="detilItemTravel-input48">
+          <span class="input-label">Waktu Jalan : {{ tmp.waktu_itemtravel }}</span>
+        </label>
+        <label class="item item-input" id="detilItemTravel-input49">
+          <span class="input-label">Tarif : {{ tmp.harga_itemtravel | currency : 'Rp.'  }}</span>
+        </label>
+        <label class="item item-input" id="detilItemTravel-textarea9">
+          <span class="input-label">Fasilitas : {{ tmp.info_itemtravel }}</span></label>
+      </div>
+
+    </ion-content>
+  </ion-modal-view>
+</script>
+
+<script id="modal-umum-detail-rental.html" type="text/ng-template">
+  <ion-modal-view>
+    <ion-header-bar class=bar-positive>
+      <h1 class="title">Detail {{ tmp.namakendaraan_itemrental }}</h1>
+        <div class="buttons;float:"left";" >
+        <button class="button button-icon button-clear ion-ios-arrow-back" ng-click="modalRental.hide()"></button>
+      </div>
+    </ion-header-bar>
+    <ion-content>
+
+      <div class="list">
+        <div style="margin: 0px; background-color: rgb(232, 235, 239); text-align: center;">
+          <img src="https://dummyimage.com/600x400/000/fff&text=GambarHaha" ng-if="!tmp.photos.length"> 
+          <img ng-src="{{ApiEndpoint.main+'img/'+photo.nama_gambar}}" ng-if="tmp.photos.length" ng-show="$index==0" ng-repeat="photo in tmp.photos">
+        </div>
+        <label class="item item-input" id="detilItemRental-input42">
+          <span class="input-label">Nama Kendaraan : {{ tmp.namakendaraan_itemrental }}</span>
+        </label>
+        <label class="item item-input" id="detilItemRental-input43">
+          <span class="input-label">Jenis Kendaraan : {{ tmp.jeniskendaraan_itemrental }}</span>
+        </label>
+        <label class="item item-input" id="detilItemRental-input44">
+          <span class="input-label">Satuan Sewa : {{ tmp.satuanharga_itemrental }}</span>
+        </label>
+        <label class="item item-input" id="detilItemRental-input45">
+          <span class="input-label">Harga : {{ tmp.harga_itemrental | currency : 'Rp.'  }}</span>
+        </label>
+        <label class="item item-input" id="detilItemRental-textarea8">
+          <span class="input-label">Deskripsi : {{ tmp.info_itemrental }}</span></label>
+      </div>
+
+    </ion-content>
+  </ion-modal-view>
+</script>
+
+<script id="modal-umum-detail-info.html" type="text/ng-template">
+  <ion-modal-view>
+
+    <ion-header-bar class="bar-positive">
+      <h1 class="title">Detil Info</h1>
+      <div class="buttons;float:"left";" >
+        <button class="button button-icon button-clear ion-ios-arrow-back" ng-click="modalInfo.hide()"></button>
+      </div>
+    </ion-header-bar>
+
+     <ion-content padding="true" class="has-header">
+      <br>
+        <h5> Judul : {{ tmp.judul_info }} </h5>
+        <h5> Waktu Posting : {{tmp.created_at}}</h5>
+        <p> Sumber Info :<a ng-click="detilusaha(data)">{{tmp.usaha.nama_usaha}} </a></p>
+          <div style="margin: 0px; line-height: 500px; background-color: rgb(232, 235, 239); text-align: center;">
+          <img class="gambar-feed" src="https://dummyimage.com/600x400/000/fff&text=GambarHaha" ng-if="!tmp.photos.length"> 
+               <ion-slide-box ng-if="tmp.photos.length" >
+                  <ion-slide ng-repeat="photo in tmp.photos" style="max-height:500px;overflow:hidden;">
+
+                    <img class="gambar-feed" ng-src="{{ApiEndpoint.main+'img/'+photo.nama_gambar}}" >
+                  </ion-slide>
+                </ion-slide-box>
+              </div>
+          <div class="padding show-list-numbers-and-dots">
+          <br><br>
+            <p style="color:#000000;">{{ tmp.isi_info }}</p>
+          </div>
+
+    </ion-content>
+
+  </ion-modal-view>
+</script>
+
+<script id="modal-usaha-detail-info.html" type="text/ng-template">
+  <ion-modal-view>
+
+    <ion-header-bar class="bar-positive">
+      <h1 class="title">Detil Info</h1>
+      <div class="buttons;float:"left";" >
+        <button class="button button-icon button-clear ion-ios-arrow-back" ng-click="modalInfo.hide()"></button>
+      </div>
+    </ion-header-bar>
+
+     <ion-content padding="true" class="has-header">
+      <br>
+        <h5> Judul : {{ data.judul_info }} </h5>
+        <h5> Waktu Posting : {{data.created_at}}</h5>
+          <div style="border-radius: 8px;">
+          <img class="gambar-feed" src="https://dummyimage.com/600x400/000/fff&text=GambarHaha" ng-if="!tmp.photos.length"> 
+               <ion-slide-box ng-if="tmp.photos.length" >
+                  <ion-slide ng-repeat="photo in tmp.photos" style="max-height:500px;overflow:hidden;">
+
+                    <img class="gambar-feed" ng-src="{{ApiEndpoint.main+'img/'+photo.nama_gambar}}" >
+                  </ion-slide>
+                </ion-slide-box>
+              </div>
+          <div class="padding show-list-numbers-and-dots">
+          <br><br>
+            <p style="color:#000000;">{{ tmp.isi_info }}</p>
+          </div>
+
+    </ion-content>
+
+    </ion-modal-view>
+</script>
+

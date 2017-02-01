@@ -1,0 +1,78 @@
+<ion-view title="Lihat Info" >
+
+<style type="text/css">
+
+  .gambar-status{
+   display: block;
+    margin: auto;
+    width: 187px;
+  }
+
+  .info{
+    font-size: 19px;
+    font-family: "Arial Verdana";
+  }
+  .kartu{
+    background-color: #f8f8f8;
+  }
+
+  .item-avatar{
+    background-color: #d3d9e2;
+  }
+
+</style>
+
+    <ion-nav-buttons side="right" class="has-header">
+      <button class="button button-icon icon ion-android-more-horizontal"></button>
+    </ion-nav-buttons>
+
+    <div class="tabs-striped tabs-top tabs-background-positive tabs-color-light">
+
+      <div class="tabs">
+        <a class="tab-item" ng-class="{ 'active' : type=='travel' }" ng-click="changeFeed('travel')">
+          Travel
+        </a>
+        <a class="tab-item" ng-class="{ 'active' : type=='rental' }" ng-click="changeFeed('rental')">
+          Rental
+        </a>
+      </div>
+    </div>
+
+    <ion-content class="has-subheader ">
+    
+      <div class="item item-divider text-center" ng-if="!feeds.length">
+        Belum ada info dari {{ type }} !
+      </div>
+
+      <div class="list card kartu" ng-repeat="data in feeds">
+        
+        <div class="row">
+            <div class="col" style="width:50%;"><p> &nbsp;&nbsp;{{ data.judul_info }} </p><br><p class="info"> {{ data.isi_info }} </p></div>
+            <div class="col">   
+                 <div class="item item-body kartu">
+                     <ion-slide-box on-slide-changed="slideHasChanged($index)" ng-if="data.photos.length" >
+                        <ion-slide ng-repeat="photo in data.photos">
+                          <img class="gambar-status" ng-src="{{ApiEndpoint.main+'img/'+photo.nama_gambar}}" >
+                        </ion-slide>
+                      </ion-slide-box>
+                 </div>
+             </div>
+        </div>
+
+        <div width="100%" ng-click="showDetailInfo(data)">
+          <div class="item item-avatar kartu">
+            <img src="https://dummyimage.com/600x400/000/fff&text=" ng-if="!tmp.photos.length"> 
+            <img ng-src="{{ApiEndpoint.main+'img/'+photo.nama_gambar}}" ng-if="tmp.photos.length" ng-show="$index==0" ng-repeat="photo in tmp.photos">
+            <h2>by {{ data.usaha.nama_usaha }}</h2>
+            <p>{{data.created_at}}</p>
+          </div>
+
+      
+
+        </div>
+        
+      </div>
+
+  </ion-content>
+
+</ion-view>

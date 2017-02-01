@@ -1,0 +1,60 @@
+<ion-view title="Edit Item Travel" id="page11" style="">
+<style type="text/css">
+
+  .gambar-haha {
+    display: block;
+    margin: auto;
+    width: 80%;
+}
+
+
+</style>
+  <ion-content padding="true" class="has-header">
+
+    <form name="formItem" class="list" ng-submit="update(formItem.$valid,dataEdit)">
+      <label class="item item-input" id="tambahItemTravel-input19">
+        <span class="input-label">Tujuan</span>
+        <input type="text" placeholder="Tujuan" ng-model="dataEdit.tujuan_itemtravel" required>
+      </label>
+      <label class="item item-input">
+        <span class="input-label">Kendaraan</span>
+        <input placeholder="Tipe Kendaraan" type="text" ng-model="dataEdit.kendaraan_itemtravel" required>
+      </label>
+      <label class="item item-input">
+        <span class="input-label">Waktu Berangkat</span>
+        <input type="datetime-local" ng-model="dataEdit.waktu_itemtravel" required>
+      </label>
+      <label class="item item-input">
+        <span class="input-label">Tarif</span>
+        <input placeholder="Masukkan Tarif" type="text" ng-model="dataEdit.harga_itemtravel" required>
+      </label>
+      <label class="item item-input">
+        <span class="input-label">Fasilitas</span>
+        <textarea placeholder="Masukkan fasilitas" ng-model="dataEdit.fasilitas_itemtravel" required></textarea>
+      </label>
+      <label class="item item-input">
+        <span class="input-label">Catatan</span>
+        <textarea placeholder="Masukkan fasilitas" ng-model="dataEdit.info_itemtravel" required></textarea>
+      </label>
+        <div class="row">
+          <div class="col col-33 col-center">
+                <button class="button button-block button-balanced" ng-disabled="usahaEditPhoto.status" ng-click="uploadImage(dataEdit,type)" ng-if="image">{{ usahaEditPhoto.text }}</button>
+              <button class="button button-small button-positive" ng-click="loadImage()">Masukan Foto</button>
+          </div>
+          <div class="col">
+
+              <ion-slide-box ng-if="dataEdit.photos.length" ng-if="!image">
+              <ion-slide ng-repeat="photo in dataEdit.photos">
+                <img class="gambar-haha" ng-src="{{ApiEndpoint.main+'img/'+photo.nama_gambar}}" >
+              </ion-slide>
+            </ion-slide-box>
+
+            <div class="item item-image" ng-if="image">
+              <img ng-src="{{pathForImage(image)}}" >
+            </div>
+          </div>
+        </div>
+     <button ng-disabled="formItem.$invalid || itemStatus.status" class="button button-positive  button-block">{{ itemStatus.text }}</button>
+    </form>
+  </ion-content>
+</ion-view>

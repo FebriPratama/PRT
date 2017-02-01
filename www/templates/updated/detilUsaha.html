@@ -1,0 +1,66 @@
+
+<ion-view title="Detil Usaha">
+    <style type="text/css">
+        
+        .ion-email:before {
+            content: url('icons/text-lines(1).png') !important;
+          }
+        .ion-speakerphone:before {
+              content: url('icons/booking(1).png') !important;
+            }
+        .bayangan{
+              box-shadow: 5px 5px 5px #888888;
+        }
+        
+    </style>
+    <ion-content padding="true" class="has-header">
+
+      <form class="list">
+        <div style="margin: 0px; text-align: center;">
+          <img ng-src="https://dummyimage.com/600x400/000/fff&text=Gambar Usaha" ng-if="!dataEditUsaha.img_usaha" style="width:100%;"> 
+          <img ng-src="{{ApiEndpoint.main+'img/'+dataEditUsaha.img_usaha}}" ng-if="dataEditUsaha.img_usaha">            
+        </div><br>
+        <label class="item item-input" >
+          <span class="input-label">Nama Usaha</span>:&nbsp;
+          <span >{{ dataEditUsaha.nama_usaha }}</span>
+        </label>
+        <label class="item item-input" >
+          <span class="input-label">Alamat</span>&nbsp;:&nbsp;
+          <span >{{ dataEditUsaha.alamat_usaha }}</span>
+        </label>
+        <label class="item item-input">
+          <span class="input-label">Kategori</span>&nbsp;:&nbsp;
+          <span >{{ dataEditUsaha.kategori_usaha }}</span>
+        </label>
+        <label class="item item-input" >
+          <span class="input-label">Latitude</span>&nbsp;:&nbsp;
+          <span >{{ dataEditUsaha.latitude_usaha }}</span>
+        </label>
+        <label class="item item-input">
+          <span class="input-label">Longitude</span>&nbsp;:&nbsp;
+          <span >{{ dataEditUsaha.longitude_usaha }}</span>
+        </label>
+         <label class="item item-input item-stacked-label"  >
+          <span class="input-label">Deskripsi usaha</span><textarea placeholder="" ></textarea></label>
+      </form>
+
+      <div class="row">
+       <div class="col col-50 text-center">   
+          <a class="button button-stable button-small button-block bayangan" ui-sref="app.umum-listinfo" ><i class="icon ion-email"><br></i>Lihat Kumpulan feed</a>
+        </div>
+
+        <div class="col col-50 text-center" ng-if="dataEditUsaha.kategori_usaha == 'rental'">   
+         <a  class="button button-stable button-small button-block bayangan" ui-sref="app.umum-listrental"><i class="icon ion-speakerphone"><br></i>Lihat Item Rental</a>
+        </div>
+
+        <div class="col col-50 text-center" ng-if="dataEditUsaha.kategori_usaha == 'travel'">   
+         <a ui-sref="app.umum-listtravel" class="button button-stable button-small button-block bayangan"><i class="icon ion-speakerphone"><br></i>Lihat Item Travel</a>
+        </div>
+      </div>
+
+      <a class="button button-positive button-small button-block" ui-sref="app.umum-carilokasi">Cari Lokasi</a>
+
+  </ion-content>
+   
+
+</ion-view>

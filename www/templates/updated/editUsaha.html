@@ -1,0 +1,46 @@
+<ion-view title="Edit Usaha" id="page12" style="">
+  <ion-content padding="true" class="has-header">
+    <form name="formUpdateUsaha" ng-submit="updateUsaha(formUpdateUsaha.$valid,dataEditUsaha)" class="list">
+      <label class="item item-input" id="editUsaha-input23">
+        <span class="input-label">Nama Usaha</span>
+        <input placeholder="" type="text" ng-model="dataEditUsaha.nama_usaha" required>
+      </label>
+      <label class="item item-input" id="editPengelola-input17">
+        <span class="input-label" required>Email Usaha</span>
+        <input placeholder="Masukkan Email" ng-model="dataEditUsaha.email_usaha" type="email" required>
+      </label>
+      <label class="item item-select" id="editUsaha-select4">
+        <span class="input-label">Kategori</span>
+        <select ng-model="dataEditUsaha.kategori_usaha" required>
+            <option value="travel">Travel</option>
+            <option value="rental">Rental</option>
+        </select>
+      </label>
+      <label class="item item-input" id="editUsaha-input24">
+        <span class="input-label">Alamat</span>
+        <input placeholder="" type="text" ng-model="dataEditUsaha.alamat_usaha" required>
+      </label>
+        <label class="item item-input" id="editPengelola-input15">
+          <span class="input-label">Usaha Lat : {{ dataEditUsaha.latitude_usaha }}</span>
+        </label>
+        <label class="item item-input" id="editPengelola-input15">
+          <span class="input-label">Usaha Long : {{ dataEditUsaha.longitude_usaha }}</span>
+        </label>
+        <button type="button" ng-click="getLocation()" class="button button-positive button-block">Get Location</button>
+      <button ng-disabled="formUsaha.$invalid || usahaEditStatus.status" class="button button-positive  button-block">{{ usahaEditStatus.text }}</button>
+    </form>
+
+    <div class="list">
+      <div class="item item-avatar-left">
+        <img ng-src="{{ApiEndpoint.main+'img/'+dataEditUsaha.img_usaha}}" style="width: 100%; height: 100%;">
+      </div>
+      <div class="item item-avatar-left" ng-if="image">
+        <img ng-src="{{pathForImage(image)}}" style="width: 100%; height: 100%;">
+        {{ image }}
+      </div>
+      <button class="button button-block button-balanced" ng-disabled="usahaEditPhoto.status" ng-click="uploadImage()" ng-if="image">{{ usahaEditPhoto.text }}</button>
+      <button class="button button-block button-positive" ng-click="loadImage()" ng-cloak="">Change Photo Profile</button>
+    </div>
+
+  </ion-content>
+</ion-view>

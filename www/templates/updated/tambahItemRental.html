@@ -1,0 +1,34 @@
+ta<ion-view title="Tambah Item Rental" id="page10" style="">
+  <ion-content padding="true" class="has-header">
+    <form name="formItem" class="list" ng-submit="store(formItem.$valid,itemData)">
+      <label class="item item-input" id="tambahItemTravel-input19">
+        <span class="input-label">Nama Kendaraan</span>
+        <input type="text" placeholder="Tujuan" ng-model="itemData.namakendaraan_itemrental" required>
+      </label>
+      <label class="item item-input">
+        <span class="input-label">Jenis Kendaraan</span>
+        <input placeholder="Tipe Kendaraan" type="text" ng-model="itemData.jeniskendaraan_itemrental" required>
+      </label>
+      <label class="item item-input item-select">
+          <div class="input-label">
+            Satuan Harga
+          </div>
+          <select ng-model="itemData.satuanharga_itemrental" required>
+            <option value="Hari" selected>Hari</option>
+            <option value="12 jam" selected>12 jam</option>
+            <option value="Jam">Jam</option>
+          </select>
+        </label>
+      </label>
+      <label class="item item-input">
+        <span class="input-label">Harga/Tarif</span>
+        <input placeholder="Masukkan Tarif" type="number" ng-model="itemData.harga_itemrental" required>
+      </label>
+      <label class="item item-input">
+        <span class="input-label">Catatan</span>
+        <textarea placeholder="Masukkan fasilitas" ng-model="itemData.info_itemrental" required></textarea>
+      </label>
+      <button ng-disabled="formItem.$invalid || itemStatus.status" class="button button-positive  button-block">{{ itemStatus.text }}</button>
+    </form>
+  </ion-content>
+</ion-view>

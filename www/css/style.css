@@ -1,0 +1,19 @@
+/* Empty. Add your own CSS if you like */
+ .pengelola {
+    background-color:  #34495e ;
+  }
+
+  .gege{
+     background-color:  #34495e ;
+     height : 12%;
+
+  }
+
+  .posisi{
+        position: absolute;
+      top: 0%;
+      left: 0%;
+  }
+
+  .ion-view{
+      background-color:  #34495e ;  }

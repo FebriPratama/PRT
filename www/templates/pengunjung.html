@@ -1,0 +1,45 @@
+<ion-pane>
+<ion-view title="Pengunjung" id="pengunjung" hide-back-button="true" >
+     <ion-nav-buttons side="left">
+        <button class="button button-icon button-clear ion-navicon" menu-toggle="left">
+        </button>
+      </ion-nav-buttons>
+
+<ion-side-menus >
+
+  <ion-side-menu-content>
+    <ion-nav-bar class="bar-stable">
+      <ion-nav-back-button>
+      </ion-nav-back-button>
+           <ion-nav-buttons side="left">
+        <button class="button button-icon button-clear ion-navicon" menu-toggle="left">
+        </button>
+      </ion-nav-buttons>
+    </ion-nav-bar>
+    <ion-nav-view name="kontenpengunjung"></ion-nav-view>
+  </ion-side-menu-content>
+
+  <ion-side-menu side="left">
+    <ion-header-bar class="bar-stable">
+      <h1 class="title">Halo Pengunjung</h1>
+    </ion-header-bar>
+    <ion-content>
+      <ion-list>
+
+        <ion-item menu-close href="#/pengunjung/lihatInfo" >
+        <img src="img/square.png" width="30"/> Lihat Info
+        </ion-item>
+        <ion-item menu-close href="#/pengunjung/lihatDaftar">
+         <img src="img/favorite.png" width="30"/> Lihat Daftar 
+        </ion-item>
+        <ion-item menu-close href="#/pengunjung/lihatSekitar">
+          <img src="img/find.png" width="30"/> Lihat Sekitar 
+        </ion-item>
+
+      </ion-list>
+    </ion-content>
+  </ion-side-menu>
+</ion-side-menus>
+</ion-pane>
+
+</ion-view>

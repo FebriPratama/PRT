@@ -1,0 +1,20 @@
+<ion-view title="List Rental" id="page25" style="">
+  <ion-nav-buttons side="right" class="has-header">
+    <button class="button button-icon icon ion-plus" ui-sref="app.tambahitem-rental({ type : type })"></button>
+  </ion-nav-buttons>
+  <ion-content padding="true" class="has-header">
+    <ion-list id="listRental-list14">
+      <div class="item item-divider text-center" ng-if="!items.length">
+        Belum ada item {{ type }}, buat satu !
+      </div>
+      <ion-item class="item-thumbnail-left" ng-repeat="data in items track by $index">
+        <img src="https://dummyimage.com/600x400/000/fff&text=" ng-if="!data.photos.length"> 
+        <img ng-src="{{ApiEndpoint.main+'img/'+photo.nama_gambar}}" ng-show="$index==0" ng-if="data.photos.length" ng-repeat="photo in data.photos">
+        <h2>{{ data.namakendaraan_itemrental }}</h2>
+        <p>{{ data.harga_itemrental | currency : 'Rp.' }}</p>
+          <ion-option-button class="button-assertive icon ion-trash-a " ng-click="deleteItem(data)">&nbsp;Delete </ion-option-button>
+         <ion-option-button class="button-positive icon ion-edit" ng-click="edit(data)"> Edit </ion-option-button> 
+      </ion-item>
+    </ion-list>
+  </ion-content>
+</ion-view>

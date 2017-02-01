@@ -1,0 +1,52 @@
+
+<ion-view title="Lihat Sekitar Anda">
+
+<style type="text/css">
+  .angular-google-map{ 
+    height: 100%;
+    min-height: 200px; 
+    width: 100%;
+  }
+  .angular-google-map-container{ 
+    height: 100%;
+    min-height: 200px; 
+    width: 100%;
+  }
+</style>
+
+  <ion-content padding="true" class="has-header">
+
+    <div style="margin: 0px; line-height: 100px; background-color: rgb(232, 235, 239); text-align: center;">
+      <ui-gmap-google-map center='map.center' zoom='map.zoom'>
+        <ui-gmap-circle center='circle.center'
+                        radius='circle.radius'
+                        fill='circle.fill'
+                        clickable='false'
+                        draggable='false'
+                        visible='true'
+                        editable='circle.editable'
+                >
+
+        </ui-gmap-circle>
+        <ui-gmap-marker
+                idKey='data.id_usaha'
+                coords='data.coords'
+                ng-repeat="data in items | filter: greaterThan('distance_usaha', map.radius)">
+        </ui-gmap-marker>
+      </ui-gmap-google-map>
+    </div><br>
+
+    <div class="list"> 
+       <ion-item class="range range-stable" id="lihatSekitar-range1">Range ({{ toKm(map.radius) }} Km)
+        <input min="0" max="60000" step="100" ng-model="map.radius" ng-change="moveCircle(map.radius)" type="range">
+      </ion-item>
+
+      <ion-item class="item-icon-left" ng-repeat="data in items | filter: greaterThan('distance_usaha', map.radius)" ng-click="detilusaha(data)">
+          <i class="icon ion-android-pin"></i>
+          {{ data.nama_usaha }} <br> Jarak : {{ toKm(data.distance_usaha) }} KM
+      </ion-item>
+    </div>
+
+  </ion-content>
+
+</ion-view>

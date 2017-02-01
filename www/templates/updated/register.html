@@ -1,0 +1,39 @@
+<ion-view title="Daftar Pengelola" id="page20" style="">
+  <ion-header-bar align-title="center" class="bar-positive">
+
+    <h1 class="title">Register Pengelola</h1>
+    <div class="buttons">
+      <button class="button button-clear button-icon ion-android-remove" ui-sref="app.dashboard"></button>
+    </div>
+
+  </ion-header-bar>
+  <ion-content padding="true" class="has-header">
+
+    <form name="formRegister" ng-submit="register(formRegister.$valid,dataRegister)">
+      <ion-list id="editPengelola-list9">
+        <label class="item item-input" id="editPengelola-input15">
+          <span class="input-label">Nama</span>
+          <input placeholder="Masukkan Nama" ng-model="dataRegister.nama_pengelola" type="text" required>
+        </label>
+        <label class="item item-input" id="editPengelola-input17">
+          <span class="input-label" required>Email</span>
+          <input placeholder="Masukkan Email" ng-model="dataRegister.email"type="email" required>
+        </label>
+        <label class="item item-input" id="editPengelola-input36">
+          <span class="input-label">No HP</span>
+          <input placeholder="Masukkan No HP" ng-model="dataRegister.nhp_pengelola" type="text" required>
+        </label>
+        <label class="item item-input" id="editPengelola-input37">
+          <span class="input-label">Password</span>
+          <input placeholder="Masukkan Password" ng-model="dataRegister.password" type="password" required>
+        </label>
+        <label class="item item-input" id="editPengelola-input37">
+          <span class="input-label">Konfirmasi Password</span>
+          <input placeholder="Masukkan Konfirmasi Password" ng-model="dataRegister.password_confirmation" type="password" required>
+        </label>
+      </ion-list>
+      <button ng-disabled="formRegister.$invalid || registerStatus.status" class="button button-positive button-block">{{ registerStatus.text }}</button>
+    </form>
+
+  </ion-content>
+</ion-view>

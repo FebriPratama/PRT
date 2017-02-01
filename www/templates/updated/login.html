@@ -1,0 +1,34 @@
+<ion-view title="Login">
+
+  <ion-header-bar align-title="center" class="bar-positive">
+
+    <h1 class="title">Login Pengelola</h1>
+    <div class="buttons">
+      
+      <button class="button button-clear button-icon ion-android-remove" ui-sref="app.dashboard"></button>
+
+    </div>
+
+  </ion-header-bar>
+  <ion-content scroll="false" padding="true">
+
+    <form name="loginForm" ng-submit="login(loginForm.$valid,loginData)" class="list">
+      <label class="item item-input" id="login-input3">
+        <span class="input-label">Email</span>
+        <input ng-model="loginData.email" placeholder="Masukkan e-mail anda" type="email" required>
+      </label>
+      <label class="item item-input" id="login-input7">
+        <span class="input-label">Password</span>
+        <input ng-model="loginData.password" placeholder="Masukkan password" type="password" required>
+      </label>
+      <button type="submit" ng-disabled="loginForm.$invalid || loginStatus.status" class="button button-positive button-block">{{ loginStatus.text }}</button>
+    </form>
+
+    <p>
+      <a ui-sref="register">Belum punya akun ?</a>
+    </p>
+
+  </ion-content>
+</ion-view>
+
+

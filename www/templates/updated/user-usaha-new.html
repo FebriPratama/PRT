@@ -1,0 +1,41 @@
+<ion-view title="Usaha Baru">
+  <ion-content class="has-header padding">
+
+    <form name="formUsaha" ng-submit="storeUsaha(formUsaha.$valid,dataUsaha)">
+      <ion-list id="editPengelola-list9">
+        <label class="item item-input" id="editPengelola-input15">
+          <span class="input-label">Nama Usaha</span>
+          <input placeholder="Masukkan Nama" ng-model="dataUsaha.nama_usaha" type="text" required>
+        </label>
+        <label class="item item-input" id="editPengelola-input17">
+          <span class="input-label" required>Email Usaha</span>
+          <input placeholder="Masukkan Email" ng-model="dataUsaha.email_usaha" type="email" required>
+        </label>
+        <label class="item item-input item-select">
+          <div class="input-label">
+            Kategori
+          </div>
+          <select ng-model="dataUsaha.kategori_usaha" required>
+            <option value="travel">Travel</option>
+            <option value="rental">Rental</option>
+          </select>
+        </label>
+        <label class="item item-input" id="editPengelola-input37">
+          <span class="input-label">Alamat</span>
+          <textarea ng-model="dataUsaha.alamat_usaha" placeholder="Masukkan Alamat Usaha"></textarea>
+        </label>
+        <label class="item item-input" id="editPengelola-input15">
+          <span class="input-label">Usaha Lat : {{ dataUsaha.latitude_usaha }}</span>
+        </label>
+        <label class="item item-input" id="editPengelola-input15">
+          <span class="input-label">Usaha Long : {{ dataUsaha.longitude_usaha }}</span>
+        </label>
+        <button ng-click="getLocation()" class="button button-positive button-block">Get Location</button>
+        <button ng-disabled="formUsaha.$invalid || usahaStatus.status" class="button button-positive button-block">{{ usahaStatus.text }}</button>
+      </ion-list>
+
+    </form>
+
+
+  </ion-content>
+</ion-view>
