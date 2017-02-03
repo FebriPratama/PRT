@@ -1,20 +1,11 @@
 
 <ion-view title="Feed from {{ brand.nama_usaha }}">
  <ion-nav-buttons side="right" class="has-header">
-    <button class="button icon button-small ion-compose button-clear" ></button>
+    <button class="button icon button-small ion-compose button-clear" ui-sref="app.tambahinfo-usaha"></button>
   </ion-nav-buttons>
   <ion-content class="has-header">
     <ion-list>
-      <div class="item item-input-inset">
-        <label class="item-input-wrapper">
-          <input type="text" placeholder="Apa yang anda pikirkan ?" id="TextArea" ng-keyup="updateTextArea()" ng-keydown="updateTextArea()" ng-model="statusData.isi_info" required>
-        </label>          
-        <button type="submit" ng-click="loadImage()" class="button button-small button-icon ion-android-attach" ng-disabled="image">
-        </button>
-        <button type="submit" ng-click="uploadImage(statusData)" ng-disabled="feedStatus.status" class="button button-small">
-          {{ feedStatus.text }}
-        </button>
-      </div>
+  
 
       <div class="item item-divider text-center" ng-if="!feeds.length">
         Belum ada status, buat satu !
@@ -25,7 +16,7 @@
         <h3>Posted On : {{ data.created_at}}</h3>
         <p>{{ data.isi_info }}</p>
          <ion-option-button class="button-assertive icon ion-trash-a" ng-click="deleteFeed(data)"> Delete </ion-option-button>
-         <ion-option-button class="button-positive icon ion-edit" ui-sref="app.edit-infousaha"> Edit </ion-option-button>
+         <ion-option-button class="button-positive icon ion-edit" ng-click="editInfo(data)"> Edit </ion-option-button>
           
       </ion-item>
 

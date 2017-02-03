@@ -1,19 +1,53 @@
 /* Empty. Add your own CSS if you like */
- .pengelola {
-    background-color:  #34495e ;
-  }
 
-  .gege{
-     background-color:  #34495e ;
-     height : 12%;
+/*pengaturan form*/
+      .pertama {
+        border-top: none;
+        border-left: none;
+        border-right: none;
+      }
+      .tengah {
+        border-left: none;
+        border-right: none;
+      }
+      .terakhir {
+        border-bottom: none;
+      }
+      .detil{
+          border-top: none;
+        border-left: none;
+        border-right: none;
+        border-bottom: none;
+      }
+      .kotak{
+        display: block;
+        margin: auto;
+        max-height:300px;
+        width : 95%;
+      }
+      .bengkok{
+         border-radius: 10px;
+      }
 
-  }
+      .bar.bar-positive{
+        background-color: #3d9665 !important;
+        color:#444 !important;
+        background-image: linear-gradient(0deg,#3d9665,#3d9665 50%,transparent 50%);
+      }
 
-  .posisi{
-        position: absolute;
-      top: 0%;
-      left: 0%;
-  }
+     .tabs-striped.tabs-color-light .tab-item.activated, .tabs-striped.tabs-color-light .tab-item.active, .tabs-striped.tabs-color-light .tab-item.tab-item-active {
+            margin-top: -2px;
+            color: #444;
+            border: 0 solid #b32f2f;
+            border-top-width: 2px;
+        }
+      .tabs-striped.tabs-background-positive .tabs {
+            background-color: #fff !important;
+            border-color: #fff;
+        }
+      .tabs-striped.tabs-color-light .tab-item {
+          color: #444;
+          opacity: 1;
+          border-left-width: 2px;
+        }    
 
-  .ion-view{
-      background-color:  #34495e ;  }

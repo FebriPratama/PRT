@@ -1,0 +1,11 @@
+-7.782864, 110.391937 Arya Travelindo
+-7.784982, 110.367025 
+-7.815570, 110.386829 Rosalia Indah (umbulharjo)
+-7.835976, 110.367002 Ros In Travel
+-7.784088, 110.367254 Rosin Mangkubumi
+
+
+--rental
+-7.890820, 110.386125 99trans jogja
+-7.858678, 110.375229 Ab Yogya
+-7.828453, 110.399605

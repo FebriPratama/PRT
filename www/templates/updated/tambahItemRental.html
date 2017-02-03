@@ -1,6 +1,8 @@
-ta<ion-view title="Tambah Item Rental" id="page10" style="">
+<ion-view title="Tambah Item Rental" id="page10" style="">
   <ion-content padding="true" class="has-header">
+
     <form name="formItem" class="list" ng-submit="store(formItem.$valid,itemData)">
+      
       <label class="item item-input" id="tambahItemTravel-input19">
         <span class="input-label">Nama Kendaraan</span>
         <input type="text" placeholder="Tujuan" ng-model="itemData.namakendaraan_itemrental" required>
@@ -29,6 +31,8 @@ ta<ion-view title="Tambah Item Rental" id="page10" style="">
         <textarea placeholder="Masukkan fasilitas" ng-model="itemData.info_itemrental" required></textarea>
       </label>
       <button ng-disabled="formItem.$invalid || itemStatus.status" class="button button-positive  button-block">{{ itemStatus.text }}</button>
+
     </form>
+
   </ion-content>
 </ion-view>

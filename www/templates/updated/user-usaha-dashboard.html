@@ -1,18 +1,68 @@
 <ion-view title="Dashboard ">
-  <ion-content class="has-header padding">
+  
+  <style type="text/css">
+     .ion-android-bicycle:before {
+        content: url('icons/travel.png') !important;
+      }
+      .ion-android-bicycle1:before {
+        content: url('icons/Car Rental-64.png') !important;
+      }
+      .ion-android-create:before {
+        content: url('icons/Quill With Ink Filled-50.png') !important;
+      }
+     
+  </style>
+  <ion-content class="has-header padding" >
+
+
+  <div >
+    <img class="kotak" ng-src="https://dummyimage.com/600x400/d3d3d3/000000.jpg&text=?" ng-if="!brand.img_usaha"> 
+    <img class="kotak" ng-src="{{ApiEndpoint.main+'img/'+brand.img_usaha}}" ng-if="brand.img_usaha">  
+  </div>
+
+    <br>
+      <form >
+          <label class="item item-input pertama putih">
+            <span class="input-label">Nama Usaha</span>
+            <span class="label" >{{brand.nama_usaha}}</span>
+          </label>
+          <label class="item item-input tengah">
+            <span class="input-label" >Email Usaha</span>
+            <span class="label" >{{brand.email_usaha}}</span>
+          </label>
+         <label class="item item-input tengah">
+            <span class="input-label" >Kategori Usaha</span>
+            <span class="label" >{{brand.kategori_usaha}}</span>
+          </label>
+          <label class="item item-input tengah" >
+            <span class="input-label">Alamat</span>
+            <span class="label" style="font-size:13px;">{{brand.alamat_usaha}}</span>
+          </label>
+            <label class="item item-input tengah" >
+              <span class="input-label">Usaha Lat </span>
+              <span class="label" >{{brand.latitude_usaha}}</span>
+            </label>
+            <label class="item item-input tengah" >
+              <span class="input-label">Usaha Long </span>
+              <span class="label" >{{brand.longitude_usaha}}</span>
+            </label>  
+     </form>
 
     <div class="row">
       <div class="col-50 text-center">
-        <button class="button button-full button-icon ion-android-create" style="font-size:36px;" ui-sref="app.user-feed"></button>
-        <h3>Status</h3>
+        <button class="button button-full button-icon ion-android-create" style="font-size:36px;" ui-sref="app.user-feed">
+         <h3>Informasi</h3>
+        </button>
       </div>
       <div class="col-50 text-center" ng-if="brand.kategori_usaha == 'rental'">
-        <button class="button button-full button-icon ion-android-bicycle" style="font-size:36px;" ui-sref="app.list-rental({ type : 'rental'})"></button>
-        <h3>Items rental</h3>
+        <button class="button button-full button-icon ion-android-bicycle1" style="font-size:36px;" ui-sref="app.list-rental({ type : 'rental'})"> 
+          <h3>Item rental</h3>
+        </button>
       </div>
       <div class="col-50 text-center" ng-if="brand.kategori_usaha == 'travel'">
-        <button class="button button-full button-icon ion-android-bicycle" style="font-size:36px;" ui-sref="app.list-travel({ type : 'travel'})"></button>
-        <h3>Items travel</h3>
+        <button class="button button-full button-icon ion-android-bicycle" style="font-size:36px;" ui-sref="app.list-travel({ type : 'travel'})">
+         <h3>Item travel</h3>
+        </button>
       </div>
     </div>
 

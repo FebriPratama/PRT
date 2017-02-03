@@ -262,7 +262,7 @@ function (ApiEndpoint, $ionicScrollDelegate, $ionicPlatform,$scope, $stateParams
 	}
 
 	$scope.loginBrand = function(data){
-
+		$scope.edit = false;
 		Auth.setBrand(data);
 		$state.go('app.user-usaha-dashboard');
 
@@ -502,10 +502,12 @@ function (ApiEndpoint, $ionicModal, $ionicPlatform, $scope, $stateParams, UserDa
 	  $scope.showDetailTravel = function(data) {
 	  	$scope.tmp = data;
 	    $scope.modalTravel.show();
+	    $scope.edit = false;
 	  };
 	  $scope.closeModalTravel = function() {
 	    $scope.modalTravel.hide();
 	  };
+
 
 	/* detail rental */
 	  $ionicModal.fromTemplateUrl('modal-umum-detail-rental.html', {
@@ -517,6 +519,7 @@ function (ApiEndpoint, $ionicModal, $ionicPlatform, $scope, $stateParams, UserDa
 	  $scope.showDetailRental = function(data) {
 	  	$scope.tmp = data;
 	    $scope.modalRental.show();
+	    $scope.edit = false;
 	  };
 	  $scope.closeModalRental = function() {
 	    $scope.modalRental.hide();
@@ -533,6 +536,7 @@ function (ApiEndpoint, $ionicModal, $ionicPlatform, $scope, $stateParams, UserDa
 	  $scope.showDetailInfo = function(data) {
 	  	$scope.tmp = data;
 	    $scope.modalInfo.show();
+	    $scope.edit = false;
 	  };
 	  $scope.closeModalInfo = function() {
 	    $scope.modalInfo.hide();
@@ -690,10 +694,10 @@ function (ApiEndpoint, $timeout, uiGmapGoogleMapApi, uiGmapIsReady, $ionicPlatfo
 
 }])
 
-.controller('itemCtrl', ['ApiEndpoint', '$ionicSlideBoxDelegate', '$ionicPlatform', '$scope', '$stateParams', 'UserData', 'Auth', '$state', '$ionicHistory', '$ionicPopup', '$cordovaCamera', '$cordovaFile', '$cordovaFileTransfer', '$cordovaDevice', '$ionicActionSheet',// The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
+.controller('itemCtrl', ['ApiEndpoint', '$ionicModal','$ionicSlideBoxDelegate', '$ionicPlatform', '$scope', '$stateParams', 'UserData', 'Auth', '$state', '$ionicHistory', '$ionicPopup', '$cordovaCamera', '$cordovaFile', '$cordovaFileTransfer', '$cordovaDevice', '$ionicActionSheet',// The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
 // You can include any angular dependencies as parameters for this function
 // TIP: Access Route Parameters for your page via $stateParams.parameterName
-function (ApiEndpoint, $ionicSlideBoxDelegate, $ionicPlatform, $scope, $stateParams, UserData, Auth, $state, $ionicHistory, $ionicPopup, $cordovaCamera, $cordovaFile, $cordovaFileTransfer, $cordovaDevice, $ionicActionSheet) {
+function (ApiEndpoint,$ionicModal ,$ionicSlideBoxDelegate, $ionicPlatform, $scope, $stateParams, UserData, Auth, $state, $ionicHistory, $ionicPopup, $cordovaCamera, $cordovaFile, $cordovaFileTransfer, $cordovaDevice, $ionicActionSheet) {
 	
 	$scope.brand = {};
 	$scope.items = {};
@@ -771,6 +775,41 @@ function (ApiEndpoint, $ionicSlideBoxDelegate, $ionicPlatform, $scope, $statePar
 		$state.go('app.edit-item'+$scope.type,{ type : $scope.type});
 
 	}
+
+	// -----------------detil rental-------------------
+	  $ionicModal.fromTemplateUrl('modal-umum-detail-rental.html', {
+	    scope: $scope,
+	    animation: 'slide-in-up'
+	  }).then(function(modal) {
+	    $scope.modalRental = modal;
+	  });
+	  $scope.showDetailRental = function(data) {
+	  	$scope.tmp = data;
+	    $scope.modalRental.show();
+	  	$scope.edit = false;
+	  };
+	  $scope.closeModalRental = function() {
+	    $scope.modalRental.hide();
+	  };
+	  // ----------------------------------------------
+
+	  // --------------detil travel-----------------------------------
+	    $ionicModal.fromTemplateUrl('modal-umum-detail-travel.html', {
+	    scope: $scope,
+	    animation: 'slide-in-up'
+	  }).then(function(modal) {
+	    $scope.modalTravel = modal;
+	  });
+	  $scope.showDetailTravel = function(data) {
+	  	$scope.tmp = data;
+	    $scope.modalTravel.show();
+	    $scope.edit = false;
+	  };
+	  $scope.closeModalTravel = function() {
+	    $scope.modalTravel.hide();
+	  };
+	  // ------------------------------------------------------
+
 
 	$scope.update = function(valid,data){
 
@@ -1070,6 +1109,7 @@ function (ApiEndpoint, $ionicModal, $scope, $stateParams, UserData, Auth, $state
 	  $scope.showDetailInfo = function(data) {
 	  	$scope.tmp = data;
 	    $scope.modalInfo.show();
+	    $scope.edit = false;
 	  };
 	  $scope.closeModalInfo = function() {
 	    $scope.modalInfo.hide();
@@ -1107,6 +1147,7 @@ function (ApiEndpoint,$ionicModal, $ionicPopup, $scope, $stateParams, UserData, 
 	$scope.statusData = { isi_info : '' };
 	$scope.feeds = [];
 	$scope.tmp={};
+
 	$scope.ApiEndpoint = ApiEndpoint;
 	$scope.auth = Auth;
 	$scope.brand = Auth.getBrandData();
@@ -1114,7 +1155,7 @@ function (ApiEndpoint,$ionicModal, $ionicPopup, $scope, $stateParams, UserData, 
 
 	$scope.storeStatus = function(valid,data){
 		$scope.feedStatus.text = 'Submitting';
-		$scope.feedStatus.status = true;
+		$scope.feedStatus.status = false;
 		UserData.storeInfo(Auth.getBrandData(),data).success(function(data){
 			if(data.status){
 				UserData.setDataStatusSingle(data.data);
@@ -1182,7 +1223,7 @@ function (ApiEndpoint,$ionicModal, $ionicPopup, $scope, $stateParams, UserData, 
 	 };
 
 	 // --------------------------------- detail info usaha--------------
-	 $ionicModal.fromTemplateUrl('modal-usaha-detail-info.html', {
+	 $ionicModal.fromTemplateUrl('modal-umum-detail-info.html', {
 	    scope: $scope,
 	    animation: 'slide-in-up'
 	  }).then(function(modal) {
@@ -1234,6 +1275,31 @@ function (ApiEndpoint,$ionicModal, $ionicPopup, $scope, $stateParams, UserData, 
 		});
 
 	};
+
+	$scope.updateInfo = function(valid,data){
+
+		$scope.usahaEditInfo.text = 'Submitting';
+		$scope.usahaEditInfo.status = true;
+		UserData.updateInfo(Auth.getBrandData(),data).success(function(data){
+			if(data.status){
+				
+				$ionicHistory.nextViewOptions({disableBack:true});
+				$state.go('app.user-feed');
+				//UserData.updateDataUsahaSingle(data.data);
+			}
+		}).error(function(){
+
+		}).finally(function(){
+			$scope.usahaEditInfo = { text : 'Submit', status : false};
+		});
+
+	}
+
+	 $scope.editInfo = function(data){
+		$state.go('app.edit-infousaha');
+		UserData.setDataTmp(data);
+	}
+	
 	
 	$scope.selectPicture = function(sourceType) {
 

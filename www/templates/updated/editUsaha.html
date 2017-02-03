@@ -1,5 +1,10 @@
 <ion-view title="Edit Usaha" id="page12" style="">
+
+
+
   <ion-content padding="true" class="has-header">
+
+
     <form name="formUpdateUsaha" ng-submit="updateUsaha(formUpdateUsaha.$valid,dataEditUsaha)" class="list">
       <label class="item item-input" id="editUsaha-input23">
         <span class="input-label">Nama Usaha</span>
@@ -9,12 +14,9 @@
         <span class="input-label" required>Email Usaha</span>
         <input placeholder="Masukkan Email" ng-model="dataEditUsaha.email_usaha" type="email" required>
       </label>
-      <label class="item item-select" id="editUsaha-select4">
+      <label class="item item-input" >
         <span class="input-label">Kategori</span>
-        <select ng-model="dataEditUsaha.kategori_usaha" required>
-            <option value="travel">Travel</option>
-            <option value="rental">Rental</option>
-        </select>
+        <span class="label">{{dataEditUsaha.kategori_usaha}}</span>
       </label>
       <label class="item item-input" id="editUsaha-input24">
         <span class="input-label">Alamat</span>

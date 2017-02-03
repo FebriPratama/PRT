@@ -11,7 +11,7 @@
       </div>
 
       <ion-item class="item-thumbnail-left" id="usaha-list-item2" ng-repeat="data in usahas" ng-click="loginBrand(data)" >
-        <img ng-src="https://dummyimage.com/600x400/000/fff&text=" ng-if="!data.img_usaha"> 
+        <img ng-src="https://dummyimage.com/600x400/d3d3d3/000000.jpg&text=?" ng-if="!data.img_usaha"> 
         <img ng-src="{{ApiEndpoint.main+'img/'+data.img_usaha}}" ng-if="data.img_usaha">  
         <h2>{{ data.nama_usaha }}</h2>
         <p>Kategori : {{ data.kategori_usaha }}</p>

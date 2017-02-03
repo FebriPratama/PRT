@@ -1,25 +1,77 @@
 <ion-view title="List Info">
+  
+  <style type="text/css">
+      .item.item-avatar  {   
+    background-color: #fbfbfb ;
+  }
 
+ .item-thumbnail-right .item-content .item-image, .item-thumbnail-right .item-content>img:first-child, .item-thumbnail-right .item-image, .item-thumbnail-right>img:first-child {
+    position: absolute;
+    top: -2px;
+    right: 0px;
+    max-width: 155px;
+    max-height: 171px;
+    width: 100%;
+    height: 102%;
+}
+.item-thumbnail-right, .item-thumbnail-right .item-content {
+    padding-top: 8px;
+    padding-right: 106px;
+    min-height: 135px;
+}
 
+div.absolute{
+    position: absolute;
+    top: 100px;
+    right: 156px;
+    width: 260px;
+    height: 49px;
+}
+
+.item-avatar .item-content .item-image, .item-avatar .item-content>img:first-child, .item-avatar .item-image, .item-avatar-left .item-content .item-image, .item-avatar-left .item-content>img:first-child, .item-avatar-left .item-image, .item-avatar-left>img:first-child, .item-avatar>img:first-child {
+    position: absolute;
+    top: 1px;
+    left: 26px;
+    max-width: 33px;
+    max-height: 30px;
+    width: 100%;
+    height: 100%;
+    border-radius: 30%;
+}
+
+.item h5 {
+
+    margin: -16px 0 3px -9px;
+    font-size: 10px;
+}
+
+  .item h6{
+  margin: 2px 0 3px -9px;
+    font-size: 10px;
+}
+  </style>
     <ion-content >
       <div class="item item-divider text-center" ng-if="!feeds.length">
         Belum ada info dari {{ dataEdit.nama_usaha }}!
       </div>
 
-      <div class="list card" ui-sref="app.umum-detaillistinfo" ng-repeat="data in feeds" ng-click="showDetailInfo(data)">
-        <div ui-sref="app.umum-detailInfo" width="100%">
-          <div class="item item-body">
-           <ion-slide-box on-slide-changed="slideHasChanged($index)" ng-if="data.photos.length" >
-              <ion-slide ng-repeat="photo in data.photos" style="max-height:150px;overflow:hidden;">
-                <img class="gambar-status" ng-src="{{ApiEndpoint.main+'img/'+photo.nama_gambar}}" >
-              </ion-slide>
-            </ion-slide-box>
-             <h3>Posted On : {{ data.created_at}}</h3>
-              <p>{{ data.isi_info }}</p>
-            </p>
+     <div class="list card" ng-repeat="data in feeds">
+    
+         <div class="item item-thumbnail-right" ng-click="showDetailInfo(data)" >
+           <img ng-src="https://dummyimage.com/600x400/d3d3d3/000000.jpg&text=?" ng-if="!data.photos.length">
+            <img ng-src="{{ApiEndpoint.main+'img/'+photo.nama_gambar}}"ng-repeat="photo in data.photos" ng-if="data.photos.length" >
+              <h2 >{{ data.judul_info }}</h2>
+              <p> {{ data.isi_info }}</p>
+          <div class="item item-avatar absolute pertama">
+            <img src="https://dummyimage.com/600x400/d3d3d3/000000.jpg&text=?" ng-if="!tmp.photos.length"> 
+            <img ng-src="{{ApiEndpoint.main+'img/'+photo.nama_gambar}}" ng-if="tmp.photos.length" ng-show="$index==0" ng-repeat="photo in tmp.photos">
+            <h5>Tanggal Post</h5>
+            <h6>{{data.created_at}}</h6>
           </div>
-        </div>  
-    </div>
+          </div>
+         
+ 
+      </div>
 
 
     </ion-content>

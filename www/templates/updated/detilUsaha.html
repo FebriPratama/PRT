@@ -8,18 +8,36 @@
         .ion-speakerphone:before {
               content: url('icons/booking(1).png') !important;
             }
+        .ion-android-bicycle:before {
+              content: url('icons/analysis.png') !important;
+            }
         .bayangan{
               box-shadow: 5px 5px 5px #888888;
         }
-        
+
+          .item-avatar .item-content .item-image, .item-avatar .item-content>img:first-child, .item-avatar .item-image, .item-avatar-left .item-content .item-image, .item-avatar-left .item-content>img:first-child, .item-avatar-left .item-image, .item-avatar-left>img:first-child, .item-avatar>img:first-child {
+            position: absolute;
+            top: 2px;
+            left: 162px;
+            max-width: 66px;
+            max-height: 66px;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+        }
+
+        .bawah{
+          margin-top: 30px;
+        }
+
     </style>
     <ion-content padding="true" class="has-header">
-
+       <div class="item item-avatar detil">
+          <img ng-src="https://dummyimage.com/600x400/d3d3d3/000000.jpg&text=?" ng-if="!dataEditUsaha.img_usaha" style="width:100%;"> 
+          <img ng-src="{{ApiEndpoint.main+'img/'+dataEditUsaha.img_usaha}}" ng-if="dataEditUsaha.img_usaha">
+         
+      </div>    
       <form class="list">
-        <div style="margin: 0px; text-align: center;">
-          <img ng-src="https://dummyimage.com/600x400/000/fff&text=Gambar Usaha" ng-if="!dataEditUsaha.img_usaha" style="width:100%;"> 
-          <img ng-src="{{ApiEndpoint.main+'img/'+dataEditUsaha.img_usaha}}" ng-if="dataEditUsaha.img_usaha">            
-        </div><br>
         <label class="item item-input" >
           <span class="input-label">Nama Usaha</span>:&nbsp;
           <span >{{ dataEditUsaha.nama_usaha }}</span>
@@ -44,23 +62,24 @@
           <span class="input-label">Deskripsi usaha</span><textarea placeholder="" ></textarea></label>
       </form>
 
-      <div class="row">
+        <div class="row">
        <div class="col col-50 text-center">   
-          <a class="button button-stable button-small button-block bayangan" ui-sref="app.umum-listinfo" ><i class="icon ion-email"><br></i>Lihat Kumpulan feed</a>
+         <button style="font-size:36px;" class="button button-icon button-stable button-clear button-block bayangan icon ion-email" ui-sref="app.umum-listinfo" ><h3>Informasi</h3></button>
         </div>
 
         <div class="col col-50 text-center" ng-if="dataEditUsaha.kategori_usaha == 'rental'">   
-         <a  class="button button-stable button-small button-block bayangan" ui-sref="app.umum-listrental"><i class="icon ion-speakerphone"><br></i>Lihat Item Rental</a>
+        <button style="font-size:36px;" class="button button-icon button-stable button-clear button-block bayangan ion-speakerphone" ui-sref="app.umum-listrental"><h3> Item Rental</h3></button>
         </div>
 
         <div class="col col-50 text-center" ng-if="dataEditUsaha.kategori_usaha == 'travel'">   
-         <a ui-sref="app.umum-listtravel" class="button button-stable button-small button-block bayangan"><i class="icon ion-speakerphone"><br></i>Lihat Item Travel</a>
+         <button style="font-size:36px;" ui-sref="app.umum-listtravel" class="button button-icon button-stable button-clear button-block bayangan ion-speakerphone"><h3>Item Travel</h3></button>
         </div>
       </div>
-
-      <a class="button button-positive button-small button-block" ui-sref="app.umum-carilokasi">Cari Lokasi</a>
-
+      <br>
+      <br>
+   <button class="button button button-icon button-positive button-clear button-block ion-android-bicycle" ui-sref="app.umum-carilokasi"><h5>Cari Lokasi</h5></button>
   </ion-content>
    
-
+ 
 </ion-view>
+ 

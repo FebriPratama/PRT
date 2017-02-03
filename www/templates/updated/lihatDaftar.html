@@ -1,4 +1,5 @@
 <ion-view title="Lihat Daftar">
+ 
     <ion-nav-buttons side="right" class="has-header">
       <button class="button button-icon icon ion-android-more-horizontal"></button>
     </ion-nav-buttons>
@@ -17,11 +18,8 @@
       <div class="item item-divider text-center" ng-if="!items.length">
         Belum ada daftar {{ type }} !
       </div>
+
       <div class="list list-inset" ng-if="items.length">
-        <label class="item item-input">
-          <i class="icon ion-search placeholder-icon"></i>
-          <input type="text" ng-model="query" placeholder="Search">
-        </label>
       </div>
       <div class="list list-inset">
 
