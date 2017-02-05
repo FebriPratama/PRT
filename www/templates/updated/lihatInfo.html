@@ -2,12 +2,7 @@
 
 <style type="text/css">
 
-  .gambar-status{
-   display: block;
-    margin: auto;
-    width: 187px;
-  }
-
+  
   .info{
     font-size: 19px;
     font-family: "Arial Verdana";
@@ -34,8 +29,8 @@
 div.absolute{
     position: absolute;
     top: 100px;
-    right: 156px;
-    width: 260px;
+    right: 161px;
+    width: 207px;
     height: 49px;
 }
 
@@ -59,6 +54,11 @@ div.absolute{
   .item h6{
   margin: 2px 0 3px -33px;
     font-size: 10px;
+}
+
+.img{
+  max-width:100%;
+max-height:100%;
 }
 
 </style>
@@ -91,7 +91,7 @@ div.absolute{
            <img ng-src="https://dummyimage.com/600x400/d3d3d3/000000.jpg&text=?" ng-if="!data.photos.length">
             <img ng-src="{{ApiEndpoint.main+'img/'+photo.nama_gambar}}"ng-repeat="photo in data.photos" ng-if="data.photos.length" >
               <h2 >{{ data.judul_info }}</h2>
-              <textarea style="width:243px;height:100px;"> {{ data.isi_info }}</textarea>
+              <p style="max-height: 62px;max-width: 202px !important;white-space:normal;">{{ data.isi_info }}</p>
           <div class="item item-avatar absolute pertama">
             <img src="https://dummyimage.com/600x400/d3d3d3/000000.jpg&text=?" ng-if="!tmp.photos.length"> 
             <img ng-src="{{ApiEndpoint.main+'img/'+photo.nama_gambar}}" ng-if="tmp.photos.length" ng-show="$index==0" ng-repeat="photo in tmp.photos">

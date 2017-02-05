@@ -738,6 +738,11 @@ function (ApiEndpoint,$ionicModal ,$ionicSlideBoxDelegate, $ionicPlatform, $scop
 
 	}
 
+	$scope.expandText = function(){
+	var element = document.getElementById("txtnotes");
+	element.style.height =  element.scrollHeight + "px";
+	}
+
 	$scope.deleteItem = function(data) {
 
 		var nama = $scope.type == 'travel' ? data.tujuan_itemtravel : data.namakendaraan_itemrental;

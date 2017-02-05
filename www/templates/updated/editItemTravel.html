@@ -6,6 +6,9 @@
     margin: auto;
     width: 80%;
 }
+.item-input input, .item-input textarea {
+    width: 235px;
+}
 
 
 </style>
@@ -30,11 +33,7 @@
       </label>
       <label class="item item-input">
         <span class="input-label">Fasilitas</span>
-        <textarea placeholder="Masukkan fasilitas" ng-model="dataEdit.fasilitas_itemtravel" required></textarea>
-      </label>
-      <label class="item item-input">
-        <span class="input-label">Catatan</span>
-        <textarea placeholder="Masukkan fasilitas" ng-model="dataEdit.info_itemtravel" required></textarea>
+        <textarea placeholder="Masukkan fasilitas" id="txtnotes" ng-keyup="expandText()" ng-keydown="expandText()"ng-model="dataEdit.fasilitas_itemtravel" required></textarea>
       </label>
         <div class="row">
           <div class="col col-33 col-center">
