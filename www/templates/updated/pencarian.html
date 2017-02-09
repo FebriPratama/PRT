@@ -16,13 +16,13 @@
         }
         .item-avatar, .item-avatar .item-content, .item-avatar-left, .item-avatar-left .item-content {
             padding-left: 72px;
-            min-height: 193px;
+            min-height: 130px;
         }
 
       .item-avatar .item-content .item-image, .item-avatar .item-content>img:first-child, .item-avatar .item-image, .item-avatar-left .item-content .item-image, .item-avatar-left .item-content>img:first-child, .item-avatar-left .item-image, .item-avatar-left>img:first-child, .item-avatar>img:first-child {
           position: absolute;
-          top: 60px;
-          left: 130px;
+          top: 2px;
+          left: 114px;
           max-width: 127px;
           max-height: 127px;
           width: 100%;
@@ -31,7 +31,7 @@
       }
       .tabs{
         bottom: -34px;
-        top: 241px;
+        right: 0px;
       }
 
       .tab-item{
@@ -59,6 +59,8 @@
 
     </style>
 
+    <ion-content padding="true" class="has-header">
+    
       <div>
          <div class="item item-avatar detil">
             <img ng-src="https://dummyimage.com/600x400/d3d3d3/000000.jpg&text=?" ng-if="!dataEditUsaha.img_usaha" style="width:100%;"> 
@@ -71,63 +73,53 @@
           <p style="text-align: center;">nama pengelola</p>
 
         <div class="tabs-striped tabs-background-energized tabs-color-light">
-          <div class="tabs" >
-            <a class="tab-item" ng-class="{ 'active' : type=='info' }" ng-click="changeInfo('info')">
+          <div class="tabs">
+            <a class="tab-item">
               Info Usaha
             </a>
-            <a class="tab-item" ng-if="dataEditUsaha.kategori_usaha == 'rental'"  ng-class="{ 'active' : type=='rental' }" ng-click="changeInfo('rental')">
+            <a class="tab-item" >
               Item Rental
-            </a>
-            <a class="tab-item" ng-if="dataEditUsaha.kategori_usaha == 'travel'"  ng-class="{ 'active' : type=='travel' }" ng-click="changeInfo('travel')">
-              Item Travel
             </a>
           </div>
         </div>
 
       </div>
 
-   <ion-content padding="true" class="has-header">
+
     <!--   <form class="list">
         <label class="item item-input" >
-          <span class="input-label">Nama Usaha</span>:&nbsp;
-          <span >{{ dataEditUsaha.nama_usaha }}</span>
-        </label>
-        <label class="item item-input" >
           <span class="input-label">Alamat</span>&nbsp;:&nbsp;
-          <span >{{ dataEditUsaha.alamat_usaha }}</span>
+          <span >alamat usaha</span>
         </label>
         <label class="item item-input">
           <span class="input-label">Kategori</span>&nbsp;:&nbsp;
-          <span >{{ dataEditUsaha.kategori_usaha }}</span>
+          <span >kategori usaha</span>
         </label>
         <label class="item item-input" >
           <span class="input-label">Latitude</span>&nbsp;:&nbsp;
-          <span >{{ dataEditUsaha.latitude_usaha }}</span>
+          <span >latitude usaha</span>
         </label>
         <label class="item item-input">
           <span class="input-label">Longitude</span>&nbsp;:&nbsp;
-          <span >{{ dataEditUsaha.longitude_usaha }}</span>
+          <span >longitude usaha</span>
         </label>
          <label class="item item-input item-stacked-label"  >
           <span class="input-label">Deskripsi usaha</span><textarea placeholder="" ></textarea></label>
-      </form> -->
+      </form>
 
-<!--         <div class="row">
+        <div class="row">
        <div class="col col-50 text-center">   
-         <button style="font-size:36px;" class="button button-icon button-stable button-clear button-block bayangan icon ion-email" ui-sref="app.umum-listinfo" ><h3>Informasi</h3></button>
+         <button style="font-size:36px;" class="button button-icon button-stable button-clear button-block bayangan icon ion-email" ><h3>Informasi</h3></button>
         </div>
 
-        <div class="col col-50 text-center" ng-if="dataEditUsaha.kategori_usaha == 'rental'">   
-        <button style="font-size:36px;" class="button button-icon button-stable button-clear button-block bayangan ion-speakerphone" ui-sref="app.umum-listrental"><h3> Item Rental</h3></button>
+        <div class="col col-50 text-center" >   
+        <button style="font-size:36px;" class="button button-icon button-stable button-clear button-block bayangan ion-speakerphone" ><h3> Item Rental</h3></button>
         </div>
 
-        <div class="col col-50 text-center" ng-if="dataEditUsaha.kategori_usaha == 'travel'">   
-         <button style="font-size:36px;" ui-sref="app.umum-listtravel" class="button button-icon button-stable button-clear button-block bayangan ion-speakerphone"><h3>Item Travel</h3></button>
-        </div>
       </div>
       <br>
       <br>
-   <button class="button button button-icon button-positive button-clear button-block ion-android-bicycle" ui-sref="app.umum-carilokasi"><h5>Cari Lokasi</h5></button> -->
+   <button class="button button button-icon button-positive button-clear button-block ion-android-bicycle" ><h5>Cari Lokasi</h5></button> -->
   </ion-content>
    
  

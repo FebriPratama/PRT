@@ -1,2 +1,0 @@
-Application key [base64:4lfuhshUqQc4ZEjjEhmkPYZ94ZqPHlwO2iN9RJFmpuM=] set successfully.
-Application ready! Build something amazing.

@@ -149,6 +149,8 @@ function (ApiEndpoint, $ionicScrollDelegate, $ionicPlatform,$scope, $stateParams
 	$scope.dataUsaha = { isi_info : '', kategori_usaha : 'travel', latitude_usaha : 1, longitude_usaha : 1 };
 	$scope.dataEditUsaha = UserData.getDataTmp();
 	$scope.usahas = [];
+	$scope.items = [];
+	$scope.feeds = [];
 	$scope.ApiEndpoint = ApiEndpoint;
 	$scope.brand = Auth.getBrandData();
 	$ionicScrollDelegate.resize();
@@ -474,6 +476,44 @@ function (ApiEndpoint, $ionicScrollDelegate, $ionicPlatform,$scope, $stateParams
 		});
 
 	}
+	//--------------------------------------- coba2x -----------------------
+	
+
+    $scope.$on("$ionicView.beforeEnter", function(event, data){
+		UserData.getItem($scope.dataEdit.kategori_usaha,$scope.dataEdit).success(function(data){
+			
+			UserData.setDataItems(data.data);
+
+		});
+		UserData.getInfo($scope.dataEdit).success(function(data){
+			$scope.feeds = data.data;
+		});
+    });
+
+
+	$scope.changeInfo = function(type){
+		$scope.type = type;
+		$scope.items = [];
+		UserData.getInfo(type).success(function(data){
+			$scope.items = data.data;
+		}).error(function(){
+
+		}).finally(function(){
+
+		});
+
+	}
+
+	UserData.getUsahaSearch($scope.type).success(function(data){
+		$scope.items = data.data;
+	}).error(function(){
+
+	}).finally(function(){
+
+	});
+
+
+	//-----------------------------------------------------------------------
 
 	$scope.$watch('image', function(newValue, oldValue, scope) {
 		$scope.image = newValue;

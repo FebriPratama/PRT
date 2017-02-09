@@ -42,6 +42,5 @@
         <splash density="port-xxxhdpi" src="resources/android/splash/drawable-port-xxxhdpi-screen.png" />
     </platform>
     <plugin name="cordova-plugin-geolocation" spec="~2.4.1" />
-    <plugin name="platform-android"/>
     <engine name="android" spec="~6.0.0" />
 </widget>
