@@ -288,7 +288,7 @@ angular.module('app.routes', [])
       },
       onEnter: function(UserData,$state){
         if(!UserData.getDataTmp().nama_usaha){
-          // $state.go('app.umum-lihatsekitar');
+          $state.go('app.umum-lihatdaftar');
         }
       }
     })

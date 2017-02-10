@@ -1,70 +1,10 @@
 
 <ion-view title="Detil Usaha">
 
-    <style type="text/css">
-        .ion-email:before {
-            content: url('icons/text-lines(1).png') !important;
-          }
-        .ion-speakerphone:before {
-              content: url('icons/booking(1).png') !important;
-            }
-        .ion-android-bicycle:before {
-              content: url('icons/analysis.png') !important;
-            }
-        .bayangan{
-              box-shadow: 5px 5px 5px #888888;
-        }
-        .item-avatar, .item-avatar .item-content, .item-avatar-left, .item-avatar-left .item-content {
-            padding-left: 72px;
-            min-height: 130px;
-        }
-
-      .item-avatar .item-content .item-image, .item-avatar .item-content>img:first-child, .item-avatar .item-image, .item-avatar-left .item-content .item-image, .item-avatar-left .item-content>img:first-child, .item-avatar-left .item-image, .item-avatar-left>img:first-child, .item-avatar>img:first-child {
-          position: absolute;
-          top: 2px;
-          left: 114px;
-          max-width: 127px;
-          max-height: 127px;
-          width: 100%;
-          height: 100%;
-          border-radius: 50%;
-      }
-      .tabs{
-        bottom: -34px;
-        right: 0px;
-      }
-
-      .tab-item{
-        max-width: 186px;
-      }
-
-     .tabs-striped.tabs-background-energized .tabs {
-          background-color: #9ef2d9 !important;
-          border-color: #fff;
-      }
-
-      .tombolinformasi{
-        position: absolute;
-        top: -12px;
-        right: -5px;
-        font-size: 22px;
-      }
-
-       .tabs-striped.tabs-color-light .tab-item.activated, .tabs-striped.tabs-color-light .tab-item.active, .tabs-striped.tabs-color-light .tab-item.tab-item-active {
-        margin-top: -2px;
-        color: #444;
-        border: 0 solid #b32f2f;
-        border-bottom-width: 2px;
-    }
-
-    </style>
-
-    <ion-content padding="true" class="has-header">
-    
       <div>
-         <div class="item item-avatar detil">
-            <img ng-src="https://dummyimage.com/600x400/d3d3d3/000000.jpg&text=?" ng-if="!dataEditUsaha.img_usaha" style="width:100%;"> 
-            <img ng-src="{{ApiEndpoint.main+'img/'+dataEditUsaha.img_usaha}}" ng-if="dataEditUsaha.img_usaha">
+         <div class="item item-avatar detil ukurandetil">
+            <img class="gambarusaha" style="max-width: 129px;max-height:129px;width:100%;height: 100%;border-radius: 50%;"ng-src="https://dummyimage.com/600x400/d3d3d3/000000.jpg&text=?" ng-if="!dataEditUsaha.img_usaha"> 
+            <img class="gambarusaha" style="max-width: 129px;max-height:129px;width:100%;height: 100%;border-radius: 50%;" ng-src="{{ApiEndpoint.main+'img/'+dataEditUsaha.img_usaha}}" ng-if="dataEditUsaha.img_usaha">
 
              <button class="button tombolinformasi button-icon button-dark button-clear ion-ios-information-outline"></button>
         </div>  
@@ -72,8 +12,8 @@
           <p style="text-align: center;">nama usaha</p>
           <p style="text-align: center;">nama pengelola</p>
 
-        <div class="tabs-striped tabs-background-energized tabs-color-light">
-          <div class="tabs">
+        <div class="tabs-striped garis-detilusaha tabs-background-energized tabs-color-light">
+          <div class="tabs tab-detilusaha">
             <a class="tab-item">
               Info Usaha
             </a>
@@ -86,7 +26,9 @@
       </div>
 
 
-    <!--   <form class="list">
+    <ion-content padding="true" class="wee">
+    
+      <form class="list">
         <label class="item item-input" >
           <span class="input-label">Alamat</span>&nbsp;:&nbsp;
           <span >alamat usaha</span>
@@ -107,19 +49,9 @@
           <span class="input-label">Deskripsi usaha</span><textarea placeholder="" ></textarea></label>
       </form>
 
-        <div class="row">
-       <div class="col col-50 text-center">   
-         <button style="font-size:36px;" class="button button-icon button-stable button-clear button-block bayangan icon ion-email" ><h3>Informasi</h3></button>
-        </div>
-
-        <div class="col col-50 text-center" >   
-        <button style="font-size:36px;" class="button button-icon button-stable button-clear button-block bayangan ion-speakerphone" ><h3> Item Rental</h3></button>
-        </div>
-
-      </div>
       <br>
       <br>
-   <button class="button button button-icon button-positive button-clear button-block ion-android-bicycle" ><h5>Cari Lokasi</h5></button> -->
+   <button class="button button button-icon button-positive button-clear button-block ion-android-bicycle" ><h5>Cari Lokasi</h5></button>
   </ion-content>
    
  

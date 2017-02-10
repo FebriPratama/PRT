@@ -1,66 +1,5 @@
 <ion-view title="Lihat Info" >
 
-    <style type="text/css">
-      .info{
-        font-size: 19px;
-        font-family: "Arial Verdana";
-      }
-      .item.item-avatar  {   
-        background-color: #fbfbfb ;
-      }
-
-     .item-thumbnail-right .item-content .item-image, .item-thumbnail-right .item-content>img:first-child, .item-thumbnail-right .item-image, .item-thumbnail-right>img:first-child {
-        position: absolute;
-        top: -2px;
-        right: 0px;
-        max-width: 155px;
-        max-height: 171px;
-        width: 100%;
-        height: 102%;
-    }
-    .item-thumbnail-right, .item-thumbnail-right .item-content {
-        padding-top: 8px;
-        padding-right: 106px;
-        min-height: 135px;
-    }
-
-    div.absolute{
-        position: absolute;
-        top: 100px;
-        right: 161px;
-        width: 207px;
-        height: 49px;
-    }
-
-    .item-avatar .item-content .item-image, .item-avatar .item-content>img:first-child, .item-avatar .item-image, .item-avatar-left .item-content .item-image, .item-avatar-left .item-content>img:first-child, .item-avatar-left .item-image, .item-avatar-left>img:first-child, .item-avatar>img:first-child {
-        position: absolute;
-        top: 2px;
-        left: 4px;
-        max-width: 33px;
-        max-height: 30px;
-        width: 100%;
-        height: 100%;
-        border-radius: 30%;
-    }
-
-    .item h5 {
-
-        margin: -13px 0px 5px -32px;
-        font-size: 10px;
-    }
-
-      .item h6{
-      margin: 2px 0 3px -33px;
-        font-size: 10px;
-    }
-
-    .img{
-      max-width:100%;
-    max-height:100%;
-    }
-
-    </style>
-
     <ion-nav-buttons side="right" class="has-header">
       <button class="button button-icon icon ion-android-more-horizontal"></button>
     </ion-nav-buttons>
@@ -83,6 +22,7 @@
         Belum ada info dari {{ type }} !
       </div>
       <br>
+    
       <div class="list" ng-repeat="data in feeds">
     
          <div class="item item-thumbnail-right" ng-click="showDetailInfo(data)" >
@@ -90,9 +30,11 @@
             <img ng-src="{{ApiEndpoint.main+'img/'+photo.nama_gambar}}"ng-repeat="photo in data.photos" ng-if="data.photos.length" >
               <h2 >{{ data.judul_info }}</h2>
               <p style="max-height: 62px;max-width: 202px !important;white-space:normal;">{{ data.isi_info }}</p>
-          <div class="item item-avatar absolute pertama">
-            <img src="https://dummyimage.com/600x400/d3d3d3/000000.jpg&text=?" ng-if="!tmp.photos.length"> 
-            <img ng-src="{{ApiEndpoint.main+'img/'+photo.nama_gambar}}" ng-if="tmp.photos.length" ng-show="$index==0" ng-repeat="photo in tmp.photos">
+
+          <div class="item item-avatar absolute pertama ">
+            <img class="avatarnya" src="https://dummyimage.com/600x400/d3d3d3/000000.jpg&text=?" ng-if="!tmp.photos.length"> 
+
+            <img class="avatarnya" ng-src="{{ApiEndpoint.main+'img/'+photo.nama_gambar}}" ng-if="tmp.photos.length" ng-show="$index==0" ng-repeat="photo in tmp.photos">
             <h5>by {{ data.usaha.nama_usaha }}</h5>
             <h6>{{data.created_at}}</h6>
           </div>

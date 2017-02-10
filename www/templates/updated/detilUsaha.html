@@ -1,92 +1,86 @@
 
 <ion-view title="Detil Usaha">
 
-    <style type="text/css">
-        .ion-email:before {
-            content: url('icons/text-lines(1).png') !important;
-          }
-        .ion-speakerphone:before {
-              content: url('icons/booking(1).png') !important;
-            }
-        .ion-android-bicycle:before {
-              content: url('icons/analysis.png') !important;
-            }
-        .bayangan{
-              box-shadow: 5px 5px 5px #888888;
-        }
-        .item-avatar, .item-avatar .item-content, .item-avatar-left, .item-avatar-left .item-content {
-            padding-left: 72px;
-            min-height: 193px;
-        }
-
-      .item-avatar .item-content .item-image, .item-avatar .item-content>img:first-child, .item-avatar .item-image, .item-avatar-left .item-content .item-image, .item-avatar-left .item-content>img:first-child, .item-avatar-left .item-image, .item-avatar-left>img:first-child, .item-avatar>img:first-child {
-          position: absolute;
-          top: 60px;
-          left: 130px;
-          max-width: 127px;
-          max-height: 127px;
-          width: 100%;
-          height: 100%;
-          border-radius: 50%;
-      }
-      .tabs{
-        bottom: -34px;
-        top: 241px;
-      }
-
-      .tab-item{
-        max-width: 186px;
-      }
-
-     .tabs-striped.tabs-background-energized .tabs {
-          background-color: #9ef2d9 !important;
-          border-color: #fff;
-      }
-
-      .tombolinformasi{
-        position: absolute;
-        top: -12px;
-        right: -5px;
-        font-size: 22px;
-      }
-
-       .tabs-striped.tabs-color-light .tab-item.activated, .tabs-striped.tabs-color-light .tab-item.active, .tabs-striped.tabs-color-light .tab-item.tab-item-active {
-        margin-top: -2px;
-        color: #444;
-        border: 0 solid #b32f2f;
-        border-bottom-width: 2px;
-    }
-
-    </style>
-
       <div>
-         <div class="item item-avatar detil">
-            <img ng-src="https://dummyimage.com/600x400/d3d3d3/000000.jpg&text=?" ng-if="!dataEditUsaha.img_usaha" style="width:100%;"> 
-            <img ng-src="{{ApiEndpoint.main+'img/'+dataEditUsaha.img_usaha}}" ng-if="dataEditUsaha.img_usaha">
+         <div class="item item-avatar detil ukurandetil">
+            <img class="gambarusaha" style="" ng-src="https://dummyimage.com/600x400/d3d3d3/000000.jpg&text=?" ng-if="!dataEditUsaha.img_usaha"> 
+            <img class="gambarusaha" style="max-width: 129px;max-height:129px;width:100%;height: 100%;border-radius: 50%;" ng-src="{{ApiEndpoint.main+'img/'+dataEditUsaha.img_usaha}}" ng-if="dataEditUsaha.img_usaha">
 
              <button class="button tombolinformasi button-icon button-dark button-clear ion-ios-information-outline"></button>
         </div>  
 
-          <p style="text-align: center;">nama usaha</p>
+          <p style="text-align: center;">{{dataEditUsaha.nama_usaha}}</p>
           <p style="text-align: center;">nama pengelola</p>
 
         <div class="tabs-striped tabs-background-energized tabs-color-light">
-          <div class="tabs" >
-            <a class="tab-item" ng-class="{ 'active' : type=='info' }" ng-click="changeInfo('info')">
+
+          <div class="tabs tab-detilusaha" >
+            <a class="tab-item tab-item-usaha" ng-class="{ 'active' : ftype=='info' }" ng-click="changeItem('info')">
               Info Usaha
             </a>
-            <a class="tab-item" ng-if="dataEditUsaha.kategori_usaha == 'rental'"  ng-class="{ 'active' : type=='rental' }" ng-click="changeInfo('rental')">
+
+            <a class="tab-item tab-item-usaha" ng-if="dataEditUsaha.kategori_usaha == 'rental'"  ng-class="{ 'active' : ftype=='item' }" ng-click="changeItem('item')">
               Item Rental
             </a>
-            <a class="tab-item" ng-if="dataEditUsaha.kategori_usaha == 'travel'"  ng-class="{ 'active' : type=='travel' }" ng-click="changeInfo('travel')">
+
+            <a class="tab-item tab-item-usaha" ng-if="dataEditUsaha.kategori_usaha == 'travel'"  ng-class="{ 'active' : ftype=='item' }" ng-click="changeItem('item')">
               Item Travel
             </a>
+
           </div>
+
         </div>
 
       </div>
 
-   <ion-content padding="true" class="has-header">
+   <ion-content class="wee">
+    
+    <div ng-if="ftype=='info'">
+      
+      <div class="item item-divider text-center" ng-if="!feeds.length">
+        Belum ada info dari usaha ini
+      </div>  
+      <div class="list" ng-repeat="data in feeds" >
+
+           <div class="item item-thumbnail-right" ng-click="showDetailInfo(data)" >
+             <img ng-src="https://dummyimage.com/600x400/d3d3d3/000000.jpg&text=?" ng-if="!data.photos.length">
+              <img ng-src="{{ApiEndpoint.main+'img/'+photo.nama_gambar}}"ng-repeat="photo in data.photos" ng-if="data.photos.length" >
+                <h2 >{{ data.judul_info }}</h2>
+                <p style="max-height: 62px;max-width: 202px !important;white-space:normal;">{{ data.isi_info }}</p>
+
+            <div class="item item-avatar absolute pertama ">
+              <h5>Di muat pada :</h5>
+              <h6>{{data.created_at}}</h6>
+            </div>
+            </div>
+      </div>
+
+    </div>
+    
+    <div ng-if="ftype=='item'">
+
+      <div class="item item-divider text-center" ng-if="!items.length">
+        Belum ada items dari usaha ini
+      </div>
+      <div class="list">
+
+         <ion-item class="item-thumbnail-left" ng-if="dataEditUsaha.kategori_usaha == 'rental'" ng-repeat="data in items track by $index" ng-click="showDetailRental(data)">
+              <img src="https://dummyimage.com/600x400/d3d3d3/000000.jpg&text=?" ng-if="!data.photos.length"> 
+              <img ng-src="{{ApiEndpoint.main+'img/'+photo.nama_gambar}}" ng-show="$index==0" ng-if="data.photos.length" ng-repeat="photo in data.photos">
+              <h2>{{ data.namakendaraan_itemrental }}</h2>
+              <p>{{ data.harga_itemrental | currency : 'Rp.' }}</p>
+          </ion-item>
+
+          <ion-item class="item-thumbnail-left" ng-if="dataEditUsaha.kategori_usaha == 'travel'" ng-repeat="data in items track by $index" ng-click="showDetailTravel(data)">
+            <img src="https://dummyimage.com/600x400/d3d3d3/000000.jpg&text=?" ng-if="!data.photos.length"> 
+            <img ng-src="{{ApiEndpoint.main+'img/'+photo.nama_gambar}}" ng-show="$index==0" ng-if="data.photos.length" ng-repeat="photo in data.photos">
+            <h2>Yogyakarta - {{ data.tujuan_itemtravel }}</h2>
+            <p>Waktu</p>
+        </ion-item>
+
+      </div>
+
+    </div>  
     <!--   <form class="list">
         <label class="item item-input" >
           <span class="input-label">Nama Usaha</span>:&nbsp;

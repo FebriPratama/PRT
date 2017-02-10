@@ -151,6 +151,7 @@ function (ApiEndpoint, $ionicScrollDelegate, $ionicPlatform,$scope, $stateParams
 	$scope.usahas = [];
 	$scope.items = [];
 	$scope.feeds = [];
+
 	$scope.ApiEndpoint = ApiEndpoint;
 	$scope.brand = Auth.getBrandData();
 	$ionicScrollDelegate.resize();
@@ -478,31 +479,13 @@ function (ApiEndpoint, $ionicScrollDelegate, $ionicPlatform,$scope, $stateParams
 	}
 	//--------------------------------------- coba2x -----------------------
 	
+	UserData.getFeed($scope.type).success(function(data){
+		$scope.feeds = data.data;
+	}).error(function(){
 
-    $scope.$on("$ionicView.beforeEnter", function(event, data){
-		UserData.getItem($scope.dataEdit.kategori_usaha,$scope.dataEdit).success(function(data){
-			
-			UserData.setDataItems(data.data);
+	}).finally(function(){
 
-		});
-		UserData.getInfo($scope.dataEdit).success(function(data){
-			$scope.feeds = data.data;
-		});
-    });
-
-
-	$scope.changeInfo = function(type){
-		$scope.type = type;
-		$scope.items = [];
-		UserData.getInfo(type).success(function(data){
-			$scope.items = data.data;
-		}).error(function(){
-
-		}).finally(function(){
-
-		});
-
-	}
+	});
 
 	UserData.getUsahaSearch($scope.type).success(function(data){
 		$scope.items = data.data;
@@ -513,6 +496,60 @@ function (ApiEndpoint, $ionicScrollDelegate, $ionicPlatform,$scope, $stateParams
 	});
 
 
+	$scope.changeFeed = function(data){
+		$scope.feeds = [];
+		UserData.getInfo(data).success(function(data){
+			$scope.feeds = data.data;
+			console.log(data);
+		}).error(function(){
+
+		}).finally(function(){
+
+		});
+
+	}
+
+	$scope.ftype = 'item';
+	
+	$scope.changeItem = function(type){
+		$scope.ftype = type;
+		$scope.items = [];
+		$scope.feeds = [];
+		if($scope.ftype=='info'){
+
+			UserData.getInfo($scope.dataEditUsaha).success(function(data){
+				
+				$scope.feeds = data.data;
+
+			}).error(function(){
+
+			}).finally(function(){
+
+			});
+
+		}else{
+	
+			UserData.getItem($scope.dataEditUsaha.kategori_usaha,$scope.dataEditUsaha).success(function(data){
+				
+				$scope.items = data.data;
+	
+			}).error(function(){
+
+			}).finally(function(){
+
+			});
+
+		}
+
+	}
+	$scope.changeItem('item');
+	
+/*	$scope.cekitem =function(){
+		$scope.feeds = [];
+		$scope.items = [];
+		if $scope.feed
+	}*/
+
 	//-----------------------------------------------------------------------
 
 	$scope.$watch('image', function(newValue, oldValue, scope) {
@@ -520,6 +557,7 @@ function (ApiEndpoint, $ionicScrollDelegate, $ionicPlatform,$scope, $stateParams
 	}, true);
 
 }])
+
 .controller('itemUmumCtrl', ['ApiEndpoint', '$ionicModal','$ionicPlatform', '$scope', '$stateParams', 'UserData', 'Auth', '$state', '$ionicHistory', '$ionicPopup',// The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
 // You can include any angular dependencies as parameters for this function
 // TIP: Access Route Parameters for your page via $stateParams.parameterName

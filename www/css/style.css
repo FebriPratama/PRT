@@ -35,6 +35,62 @@
         background-image: linear-gradient(0deg,#3d9665,#3d9665 50%,transparent 50%);
       }
 
+  
+
+      /*--------------css detail usaha-----------------*/
+        .bayangan{
+              box-shadow: 5px 5px 5px #888888;
+        }
+        .ukurandetil {
+            padding-left: 72px;
+            min-height: 183px;
+        }
+
+        .gambarusaha {
+                display: block;
+                margin: 33px 31% !important;
+                max-width: 129px !important;
+                max-height:129px !important;
+                width:100% !important;
+                height: 100% !important;
+                border-radius: 50% !important;
+        }
+
+        .tab-detilusaha {
+          top: 240px;
+          right: 0%;
+        }
+
+        .tab-item-usaha{
+          max-width: 186px;
+        }
+
+       .tabs-striped.tabs-background-energized .tabs {
+            background-color: #9ef2d9 !important;
+            border-color: #fff;
+        }
+
+        .tombolinformasi{
+          position: absolute;
+          top: 20%;
+          right: 5px;
+          font-size: 28px;
+        }
+
+        .wee{
+          top:283px;
+        }
+
+         .garis-detilusaha {
+          margin-bottom: -2px;
+          color: #444;
+          border: 0 solid #b32f2f;
+          border-bottom-width: 2px;
+      }
+/*------------------------------------------------------*/
+
+
+/*-----------------css lihat info------------------------*/
      .tabs-striped.tabs-color-light .tab-item.activated, .tabs-striped.tabs-color-light .tab-item.active, .tabs-striped.tabs-color-light .tab-item.tab-item-active {
             margin-top: -2px;
             color: #444;
@@ -49,5 +105,65 @@
           color: #444;
           opacity: 1;
           border-left-width: 2px;
-        }    
+        }  
 
+      .info{
+        font-size: 19px;
+        font-family: "Arial Verdana";
+      }
+
+      .avatarnya {   
+         position: absolute !important ;
+        top: 2px !important;
+        left: 4px !important;
+        max-width: 33px !important;
+        max-height: 30px !important;
+        width: 100% !important;
+        height: 100% !important;
+        border-radius: 30% !important;
+      }
+s
+     .item-thumbnail-right .item-content .item-image, .item-thumbnail-right .item-content>img:first-child, .item-thumbnail-right .item-image, .item-thumbnail-right>img:first-child {
+        position: absolute;
+        top: -2px;
+        right: 0px;
+        max-width: 100%;
+        max-height: 100%;
+        width: 38%;
+      }
+
+    .item-thumbnail-right, .item-thumbnail-right .item-content {
+        padding-top: 8px;
+        padding-right: 106px;
+        min-height: 135px;
+      }
+
+      div.absolute {
+        position: absolute;
+        background-color: #fbfbfb ;
+        top: 100px;
+        left: 0%;
+        width: 62%;
+        height: 49px;
+    }
+
+    .item h5 {
+
+        margin: -13px 0px 5px -32px;
+        font-size: 10px;
+    }
+
+      .item h6{
+      margin: 2px 0 3px -33px;
+        font-size: 10px;
+    }
+
+    .img{
+      max-width:100%;
+      max-height:100%;
+    }
+
+    </style>
+
+
+/*--------------------------------------------------------*/
