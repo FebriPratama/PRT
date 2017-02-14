@@ -68,17 +68,21 @@
                 <i class="icon ion-email"></i>
                 Login
               </a>
-              <a class="item item-icon-left" ui-sref="register">
+              <a class="item item-icon-left" ui-sref="register" menu-close>
                 <i class="icon ion-chatbubble-working"></i>
                 Register
               </a>
             </div>
             <div ng-if="auth.isUserLogin()">
+              <a class="item item-icon-left" ui-sref="app.user-profil" menu-close>
+                <i class="icon ion-person"></i>
+                Profil
+              </a>
               <a class="item item-icon-left" ui-sref="app.user-usaha" menu-close>
                 <i class="icon ion-speakerphone1"></i>
                 Usaha
               </a>
-              <a class="item item-icon-left " ng-click="logout()">
+              <a class="item item-icon-left " ng-click="logout()" >
                 <i class="icon ion-log-out"></i>
                 Logout
               </a>
@@ -114,7 +118,7 @@
 
   <ion-modal-view>
     <ion-header-bar class="bar-positive">
-      <h1 class="title">Detail {{ tmp.tujuan_itemtravel }}</h1>
+      <h1 class="title" style="text-align:center;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Detail {{ tmp.tujuan_itemtravel }}</h1>
       <div class="buttons;float:"left";" >
         <button class="button button-icon button-clear ion-ios-arrow-back" ng-click="modalTravel.hide()"></button>
       </div>
@@ -122,30 +126,29 @@
     <ion-content>
     <br>
         <div>
-          <img class="kotak bengkok" ng-src="https://dummyimage.com/600x400/d3d3d3/000000.jpg&text=?" ng-if="!tmp.photos.length">
           <img class="kotak bengkok" ng-src="{{ApiEndpoint.main+'img/'+photo.nama_gambar}}" ng-if="tmp.photos.length" ng-show="$index==0" ng-repeat="photo in tmp.photos">
         </div>
 
       <form>
         <label class="item item-input pertama" id="detilItemTravel-input46">
           <span class="input-label">Tujuan </span>
-           <span class="label" >{{tmp.tujuan_itemtravel}}</span>
+           <p>{{tmp.tujuan_itemtravel}}</p>
         </label>
         <label class="item item-input tengah" id="detilItemTravel-input47">
           <span class="input-label">Kendaraan </span>
-          <span class="label" >{{tmp.kendaraan_itemtravel}}</span>
+          <p>{{tmp.kendaraan_itemtravel}}</p>
         </label>
         <label class="item item-input tengah" id="detilItemTravel-input48">
           <span class="input-label">Waktu Jalan </span>
-          <span class="label" >{{tmp.waktu_itemtravel}}</span>
+          <p>{{tmp.waktu_itemtravel}}</p>
         </label>
         <label class="item item-input tengah" id="detilItemTravel-input49">
           <span class="input-label">Tarif </span>
-          <span class="label" > {{ tmp.harga_itemtravel | currency : 'Rp.'  }}</span>
+          <p> {{ tmp.harga_itemtravel | currency : 'Rp.'  }}</p>
         </label>
-        <label class="item item-input-float tengah" id="detilItemTravel-textarea9">
-          <span class="input-label">Fasilitas Travel</span>        
-          <textarea style="width: 370px;height: 190px;" ng-disabled="!edit">{{tmp.info_itemtravel}}</textarea>   
+        <label class="item item-stacked-label detil>
+          <span class="input-label-stacked detil">Fasilitas Travel</span>        
+          <p style="width: 355px;max-height: 100%">{{tmp.info_itemtravel}}</>   
           </label>
       </form>
     </ion-content>
@@ -156,7 +159,7 @@
 <script id="modal-umum-detail-rental.html" type="text/ng-template">
   <ion-modal-view>
     <ion-header-bar class=bar-positive>
-      <h1 class="title">Detail {{ tmp.namakendaraan_itemrental }}</h1>
+      <p class="title" style="text-align:center;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Detail {{ tmp.namakendaraan_itemrental }}</p>
         <div class="buttons;float:"left";" >
         <button class="button button-icon button-clear ion-ios-arrow-back" ng-click="modalRental.hide()"></button>
       </div>
@@ -164,30 +167,28 @@
     <ion-content>
     <br>
         <div >
-          <img class="kotak bengkok"  ng-src="https://dummyimage.com/600x400/d3d3d3/000000.jpg&text=?" ng-if="!tmp.photos.length"> 
           <img class="kotak bengkok"  ng-src="{{ApiEndpoint.main+'img/'+photo.nama_gambar}}" ng-if="tmp.photos.length" ng-show="$index==0" ng-repeat="photo in tmp.photos" >
         </div>
-
       <form>
         <label class="item item-input detil " id="detilItemRental-input42">
             <span class="input-label">Nama Kendaraan </span>
-           <span class="label" >{{tmp.namakendaraan_itemrental}}</span>
+           <p>{{tmp.namakendaraan_itemrental}}</p>
         </label>
         <label class="item item-input detil" id="detilItemRental-input43">
           <span class="input-label">Jenis Kendaraan</span>
-           <span class="label" >{{tmp.jeniskendaraan_itemrental}}</span>
+           <p>{{tmp.jeniskendaraan_itemrental}}</p>
         </label>
         <label class="item item-input detil" id="detilItemRental-input44">
           <span class="input-label">Satuan Sewa </span>
-          <span class="label" >{{tmp.satuanharga_itemrental}}</span>
+          <p>{{tmp.satuanharga_itemrental}}</p>
         </label>
         <label class="item item-input detil" id="detilItemRental-input45">
           <span class="input-label">Harga </span>
-           <span class="label">{{ tmp.harga_itemrental | currency : 'Rp.'  }}</span>
+           <p>{{ tmp.harga_itemrental | currency : 'Rp.'  }}</p>
         </label>
         <label class="item item-stacked-label detil">
           <span class="input-label">Deskripsi </span>
-          <textarea style="width: 370px;height: 190px;" ng-disabled="!edit">{{tmp.info_itemrental}}</textarea>   
+          <p style="width: 355px;max-height: 100%">{{tmp.info_itemrental}}</textarea>   
         </label>
       </form>
 
@@ -198,7 +199,7 @@
 <script id="modal-umum-detail-info.html" type="text/ng-template">
   <ion-modal-view>
     <ion-header-bar class="bar-positive">
-      <h1 class="title">Detil Info</h1>
+      <h1 class="title" style="text-align:center;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Detil Info</h1>
       <div class="buttons;float:"left";" >
         <button class="button button-icon button-clear ion-ios-arrow-back" ng-click="modalInfo.hide()"></button>
       </div>
@@ -210,7 +211,7 @@
         <p>&nbsp;&nbsp;Waktu Posting : {{tmp.created_at}}</p>
         <h5>&nbsp;&nbsp;Sumber Info :<a ng-click="detilusaha(data)">{{tmp.usaha.nama_usaha}} </a></h5>
           <div >
-          <img class="kotak bengkok"  src="https://dummyimage.com/600x400/d3d3d3/000000.jpg&text=?" ng-if="!tmp.photos.length"> 
+   
                <ion-slide-box ng-if="tmp.photos.length" >
                   <ion-slide ng-repeat="photo in tmp.photos" style="max-height:500px;overflow:hidden;">
                     <img class="kotak bengkok"  ng-src="{{ApiEndpoint.main+'img/'+photo.nama_gambar}}" >
@@ -225,4 +226,116 @@
   </ion-modal-view>
 </script>
 
+<script id="modal-detail-travel.html" type="text/ng-template">
+
+  <ion-modal-view>
+    <ion-header-bar class="bar-positive">
+      <p class="title" style="text-align:center;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Detail {{ tmp.tujuan_itemtravel }}</p>
+      <div class="buttons;float:"left";" >
+        <button class="button button-icon button-clear ion-ios-arrow-back" ng-click="modalTravel.hide()">&nbsp;&nbsp;</button>
+      </div>
+    </ion-header-bar> 
+    <ion-content>
+    <br>
+        <div>
+          <img class="kotak bengkok" ng-src="{{ApiEndpoint.main+'img/'+photo.nama_gambar}}" ng-if="tmp.photos.length" ng-show="$index==0" ng-repeat="photo in tmp.photos">
+        </div>
+
+      <form>
+        <label class="item item-input pertama" id="detilItemTravel-input46">
+          <span class="input-label">Tujuan </span>
+           <p>{{tmp.tujuan_itemtravel}}</p>
+        </label>
+        <label class="item item-input tengah" id="detilItemTravel-input47">
+          <span class="input-label">Kendaraan </span>
+          <p >{{tmp.kendaraan_itemtravel}}</p>
+        </label>
+        <label class="item item-input tengah" id="detilItemTravel-input48">
+          <span class="input-label">Waktu Jalan </span>
+          <p>{{tmp.waktu_itemtravel}}</p>
+        </label>
+        <label class="item item-input tengah" id="detilItemTravel-input49">
+          <span class="input-label">Tarif </span>
+          <p> {{ tmp.harga_itemtravel | currency : 'Rp.'  }}</p>
+        </label>
+        <label class="item item-stacked-label detil" id="detilItemTravel-textarea9">
+          <span class="input-label">Fasilitas Travel</span>        
+          <p style="width: 355px;max-height: 100%white-space: normal;">{{tmp.info_itemtravel}}</p>   
+          </label>
+      </form>
+    </ion-content>
+  </ion-modal-view>
+
+</script>
+
+
+<script id="modal-detail-rental.html" type="text/ng-template">
+  <ion-modal-view>
+    <ion-header-bar class=bar-positive>
+      <p class="title" style="text-align:center;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Detail {{ tmp.namakendaraan_itemrental }}</p>
+        <div class="buttons;float:"left";" >
+        <button class="button button-icon button-clear ion-ios-arrow-back" ng-click="modalRental.hide()"></button>
+      </div>
+    </ion-header-bar>
+    <ion-content>
+    <br>
+        <div >
+          <img class="kotak bengkok"  ng-src="{{ApiEndpoint.main+'img/'+photo.nama_gambar}}" ng-if="tmp.photos.length" ng-show="$index==0" ng-repeat="photo in tmp.photos" >
+        </div>
+
+      <form>
+        <label class="item item-input detil " id="detilItemRental-input42">
+            <span class="input-label">Nama Kendaraan </span>
+           <p>{{tmp.namakendaraan_itemrental}}</p>
+        </label>
+        <label class="item item-input detil" id="detilItemRental-input43">
+          <span class="input-label">Jenis Kendaraan</span>
+           <p>{{tmp.jeniskendaraan_itemrental}}</p>
+        </label>
+        <label class="item item-input detil" id="detilItemRental-input44">
+          <span class="input-label">Satuan Sewa </span>
+          <p>{{tmp.satuanharga_itemrental}}</p>
+        </label>
+        <label class="item item-input detil" id="detilItemRental-input45">
+          <span class="input-label">Harga </span>
+           <p>{{ tmp.harga_itemrental | currency : 'Rp.'  }}<p>
+        </label>
+        <label class="item item-stacked-label detil">
+          <span class="input-label">Deskripsi </span>
+          <p style="width: 355px;max-height: 100%white-space: normal;">{{tmp.info_itemrental}}</p>   
+        </label>
+      </form>
+
+    </ion-content>
+  </ion-modal-view>
+</script>
+
+<script id="modal-detail-info.html" type="text/ng-template">
+  <ion-modal-view>
+    <ion-header-bar class="bar-positive">
+      <p class="title" style="text-align: center;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Detil Info</p>
+      <div class="buttons;float:"left";" >
+        <button class="button button-icon button-clear ion-ios-arrow-back" ng-click="modalInfo.hide()"></button>
+      </div>
+    </ion-header-bar>
+
+     <ion-content padding="true" class="has-header">
+      <br>
+        <p>&nbsp;&nbsp;Judul : {{ tmp.judul_info }} </p>
+        <p>&nbsp;&nbsp;Waktu Posting : {{tmp.created_at}}</p>
+          <div >
+       
+               <ion-slide-box ng-if="tmp.photos.length" >
+                  <ion-slide ng-repeat="photo in tmp.photos" style="max-height:500px;overflow:hidden;">
+                    <img class="kotak bengkok"  ng-src="{{ApiEndpoint.main+'img/'+photo.nama_gambar}}" >
+                  </ion-slide>
+                </ion-slide-box>
+              </div>
+          <div class="padding show-list-numbers-and-dots">
+            <p style="color:#000000;">{{tmp.isi_info}}.</p>
+          </div>
+    </ion-content>
+
+  </ion-modal-view>
+</script>
 

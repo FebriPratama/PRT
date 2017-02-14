@@ -1,129 +1,64 @@
 
 <ion-view title="Detil Usaha">
-
       <div>
          <div class="item item-avatar detil ukurandetil">
             <img class="gambarusaha" style="" ng-src="https://dummyimage.com/600x400/d3d3d3/000000.jpg&text=?" ng-if="!dataEditUsaha.img_usaha"> 
             <img class="gambarusaha" style="max-width: 129px;max-height:129px;width:100%;height: 100%;border-radius: 50%;" ng-src="{{ApiEndpoint.main+'img/'+dataEditUsaha.img_usaha}}" ng-if="dataEditUsaha.img_usaha">
-
-             <button class="button tombolinformasi button-icon button-dark button-clear ion-ios-information-outline"></button>
         </div>  
-
           <p style="text-align: center;">{{dataEditUsaha.nama_usaha}}</p>
-          <p style="text-align: center;">nama pengelola</p>
-
+          <p style="text-align: center;" ui-sref="app.umum-carilokasi"><i class="icon ion-ios-location "></i>&nbsp;{{ dataEditUsaha.alamat_usaha }}</p>
         <div class="tabs-striped tabs-background-energized tabs-color-light">
-
           <div class="tabs tab-detilusaha" >
             <a class="tab-item tab-item-usaha" ng-class="{ 'active' : ftype=='info' }" ng-click="changeItem('info')">
               Info Usaha
             </a>
-
             <a class="tab-item tab-item-usaha" ng-if="dataEditUsaha.kategori_usaha == 'rental'"  ng-class="{ 'active' : ftype=='item' }" ng-click="changeItem('item')">
               Item Rental
             </a>
-
             <a class="tab-item tab-item-usaha" ng-if="dataEditUsaha.kategori_usaha == 'travel'"  ng-class="{ 'active' : ftype=='item' }" ng-click="changeItem('item')">
               Item Travel
             </a>
-
           </div>
-
         </div>
-
       </div>
-
    <ion-content class="wee">
-    
     <div ng-if="ftype=='info'">
-      
       <div class="item item-divider text-center" ng-if="!feeds.length">
         Belum ada info dari usaha ini
       </div>  
       <div class="list" ng-repeat="data in feeds" >
-
            <div class="item item-thumbnail-right" ng-click="showDetailInfo(data)" >
              <img ng-src="https://dummyimage.com/600x400/d3d3d3/000000.jpg&text=?" ng-if="!data.photos.length">
               <img ng-src="{{ApiEndpoint.main+'img/'+photo.nama_gambar}}"ng-repeat="photo in data.photos" ng-if="data.photos.length" >
-                <h2 >{{ data.judul_info }}</h2>
+                <h2>{{ data.judul_info }}</h2>
                 <p style="max-height: 62px;max-width: 202px !important;white-space:normal;">{{ data.isi_info }}</p>
-
             <div class="item item-avatar absolute pertama ">
               <h5>Di muat pada :</h5>
               <h6>{{data.created_at}}</h6>
             </div>
             </div>
       </div>
-
     </div>
-    
     <div ng-if="ftype=='item'">
-
       <div class="item item-divider text-center" ng-if="!items.length">
         Belum ada items dari usaha ini
       </div>
       <div class="list">
-
          <ion-item class="item-thumbnail-left" ng-if="dataEditUsaha.kategori_usaha == 'rental'" ng-repeat="data in items track by $index" ng-click="showDetailRental(data)">
               <img src="https://dummyimage.com/600x400/d3d3d3/000000.jpg&text=?" ng-if="!data.photos.length"> 
               <img ng-src="{{ApiEndpoint.main+'img/'+photo.nama_gambar}}" ng-show="$index==0" ng-if="data.photos.length" ng-repeat="photo in data.photos">
               <h2>{{ data.namakendaraan_itemrental }}</h2>
+              <p>Per-{{ data.satuanharga_itemrental}} </p>
               <p>{{ data.harga_itemrental | currency : 'Rp.' }}</p>
           </ion-item>
-
           <ion-item class="item-thumbnail-left" ng-if="dataEditUsaha.kategori_usaha == 'travel'" ng-repeat="data in items track by $index" ng-click="showDetailTravel(data)">
             <img src="https://dummyimage.com/600x400/d3d3d3/000000.jpg&text=?" ng-if="!data.photos.length"> 
             <img ng-src="{{ApiEndpoint.main+'img/'+photo.nama_gambar}}" ng-show="$index==0" ng-if="data.photos.length" ng-repeat="photo in data.photos">
             <h2>Yogyakarta - {{ data.tujuan_itemtravel }}</h2>
-            <p>Waktu</p>
+            <p>Tanggal Berangkat : {{ data.waktu_itemtravel }}</p>
+            <p>Biaya : Rp.&nbsp;{{ data.harga_itemtravel }}</p>
         </ion-item>
-
       </div>
-
     </div>  
-    <!--   <form class="list">
-        <label class="item item-input" >
-          <span class="input-label">Nama Usaha</span>:&nbsp;
-          <span >{{ dataEditUsaha.nama_usaha }}</span>
-        </label>
-        <label class="item item-input" >
-          <span class="input-label">Alamat</span>&nbsp;:&nbsp;
-          <span >{{ dataEditUsaha.alamat_usaha }}</span>
-        </label>
-        <label class="item item-input">
-          <span class="input-label">Kategori</span>&nbsp;:&nbsp;
-          <span >{{ dataEditUsaha.kategori_usaha }}</span>
-        </label>
-        <label class="item item-input" >
-          <span class="input-label">Latitude</span>&nbsp;:&nbsp;
-          <span >{{ dataEditUsaha.latitude_usaha }}</span>
-        </label>
-        <label class="item item-input">
-          <span class="input-label">Longitude</span>&nbsp;:&nbsp;
-          <span >{{ dataEditUsaha.longitude_usaha }}</span>
-        </label>
-         <label class="item item-input item-stacked-label"  >
-          <span class="input-label">Deskripsi usaha</span><textarea placeholder="" ></textarea></label>
-      </form> -->
-
-<!--         <div class="row">
-       <div class="col col-50 text-center">   
-         <button style="font-size:36px;" class="button button-icon button-stable button-clear button-block bayangan icon ion-email" ui-sref="app.umum-listinfo" ><h3>Informasi</h3></button>
-        </div>
-
-        <div class="col col-50 text-center" ng-if="dataEditUsaha.kategori_usaha == 'rental'">   
-        <button style="font-size:36px;" class="button button-icon button-stable button-clear button-block bayangan ion-speakerphone" ui-sref="app.umum-listrental"><h3> Item Rental</h3></button>
-        </div>
-
-        <div class="col col-50 text-center" ng-if="dataEditUsaha.kategori_usaha == 'travel'">   
-         <button style="font-size:36px;" ui-sref="app.umum-listtravel" class="button button-icon button-stable button-clear button-block bayangan ion-speakerphone"><h3>Item Travel</h3></button>
-        </div>
-      </div>
-      <br>
-      <br>
-   <button class="button button button-icon button-positive button-clear button-block ion-android-bicycle" ui-sref="app.umum-carilokasi"><h5>Cari Lokasi</h5></button> -->
   </ion-content>
-   
- 
 </ion-view>
- 

@@ -35,7 +35,10 @@
         background-image: linear-gradient(0deg,#3d9665,#3d9665 50%,transparent 50%);
       }
 
-  
+      .tab-detilusaha1 {
+          top: 263px;
+          right: 0%;
+        }  
 
       /*--------------css detail usaha-----------------*/
         .bayangan{
@@ -57,7 +60,7 @@
         }
 
         .tab-detilusaha {
-          top: 240px;
+          top: 253px;
           right: 0%;
         }
 
@@ -78,7 +81,11 @@
         }
 
         .wee{
-          top:283px;
+          top:306px;
+        }
+
+        .wee1{
+          top:286px;
         }
 
          .garis-detilusaha {

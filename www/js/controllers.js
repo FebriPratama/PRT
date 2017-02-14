@@ -139,10 +139,10 @@ function ($scope, $stateParams, UserData, Auth, $state,$ionicPopup,$ionicHistory
 	}, true);
 }])
 
-.controller('usahaCtrl', ['ApiEndpoint', '$ionicScrollDelegate','$ionicPlatform','$scope', '$stateParams', 'UserData', 'Auth', '$state', '$ionicHistory', '$ionicPopup', '$cordovaCamera', '$cordovaFile', '$cordovaFileTransfer', '$cordovaDevice', '$ionicActionSheet',// The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
+.controller('usahaCtrl', ['ApiEndpoint', '$ionicModal','$ionicScrollDelegate','$ionicPlatform','$scope', '$stateParams', 'UserData', 'Auth', '$state', '$ionicHistory', '$ionicPopup', '$cordovaCamera', '$cordovaFile', '$cordovaFileTransfer', '$cordovaDevice', '$ionicActionSheet',// The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
 // You can include any angular dependencies as parameters for this function
 // TIP: Access Route Parameters for your page via $stateParams.parameterName
-function (ApiEndpoint, $ionicScrollDelegate, $ionicPlatform,$scope, $stateParams, UserData, Auth, $state, $ionicHistory, $ionicPopup, $cordovaCamera, $cordovaFile, $cordovaFileTransfer, $cordovaDevice, $ionicActionSheet) {
+function (ApiEndpoint,$ionicModal,$ionicScrollDelegate,$ionicPlatform,$scope, $stateParams, UserData, Auth, $state, $ionicHistory, $ionicPopup, $cordovaCamera, $cordovaFile, $cordovaFileTransfer, $cordovaDevice, $ionicActionSheet) {
 	
 	$scope.usahaStatus = { text : 'Submit', status : false};
 	$scope.usahaEditStatus = { text : 'Submit', status : false};
@@ -477,6 +477,62 @@ function (ApiEndpoint, $ionicScrollDelegate, $ionicPlatform,$scope, $stateParams
 		});
 
 	}
+
+		/* detail travel */
+	  $ionicModal.fromTemplateUrl('modal-detail-travel.html', {
+	    scope: $scope,
+	    animation: 'slide-in-up'
+	  }).then(function(modal) {
+	    $scope.modalTravel = modal;
+	  });
+	  $scope.showDetailTravel = function(data) {
+	  	$scope.tmp = data;
+	    $scope.modalTravel.show();
+	    $scope.edit = false;
+	  };
+	  $scope.closeModalTravel = function() {
+	    $scope.modalTravel.hide();
+	  };
+
+
+	/* detail rental */
+	  $ionicModal.fromTemplateUrl('modal-detail-rental.html', {
+	    scope: $scope,
+	    animation: 'slide-in-up'
+	  }).then(function(modal) {
+	    $scope.modalRental = modal;
+	  });
+	  $scope.showDetailRental = function(data) {
+	  	$scope.tmp = data;
+	    $scope.modalRental.show();
+	    $scope.edit = false;
+	  };
+	  $scope.closeModalRental = function() {
+	    $scope.modalRental.hide();
+	  };
+
+
+	/* detail info */
+	  $ionicModal.fromTemplateUrl('modal-detail-info.html', {
+	    scope: $scope,
+	    animation: 'slide-in-up'
+	  }).then(function(modal) {
+	    $scope.modalInfo = modal;
+	  });
+	  $scope.showDetailInfo = function(data) {
+	  	$scope.tmp = data;
+	    $scope.modalInfo.show();
+	    $scope.edit = false;
+	  };
+	  $scope.closeModalInfo = function() {
+	    $scope.modalInfo.hide();
+	  };
+	  	$scope.detilusaha = function(data){
+		$state.go('app.umum-detilusaha');
+		UserData.setDataTmp(data);
+		
+	}
+
 	//--------------------------------------- coba2x -----------------------
 	
 	UserData.getFeed($scope.type).success(function(data){
@@ -543,12 +599,6 @@ function (ApiEndpoint, $ionicScrollDelegate, $ionicPlatform,$scope, $stateParams
 
 	}
 	$scope.changeItem('item');
-	
-/*	$scope.cekitem =function(){
-		$scope.feeds = [];
-		$scope.items = [];
-		if $scope.feed
-	}*/
 
 	//-----------------------------------------------------------------------
 
@@ -1202,7 +1252,7 @@ function (ApiEndpoint, $ionicModal, $scope, $stateParams, UserData, Auth, $state
 		$state.go('app.umum-detilusaha');
 		UserData.setDataTmp(data);
 		
-	}
+	};
 
 	$scope.changeFeed = function(type){
 		$scope.type = type;
@@ -1560,10 +1610,10 @@ function (ApiEndpoint,$ionicModal, $ionicPopup, $scope, $stateParams, UserData, 
 
 }])
 
-.controller('loginCtrl', ['$scope', '$stateParams', 'UserData', 'Auth', '$state',// The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
+.controller('loginCtrl', ['$scope', '$ionicPopup','$stateParams', 'UserData', 'Auth', '$state',// The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
 // You can include any angular dependencies as parameters for this function
 // TIP: Access Route Parameters for your page via $stateParams.parameterName
-function ($scope, $stateParams, UserData, Auth, $state) {
+function ($scope, $ionicPopup ,$stateParams, UserData, Auth, $state) {
 	
 	$scope.loginStatus = { text : 'Login', status : false};
 
@@ -1572,22 +1622,33 @@ function ($scope, $stateParams, UserData, Auth, $state) {
 		$scope.loginStatus.status = true;
 		UserData.loginUser(data).success(function(data){
 			if(data.status){
+				var alertPopup = $ionicPopup.alert({
+		     title: 'Status',
+		     template: 'Login Sukses'
+		   });
 				Auth.setUser(data.data);
 				$state.go('app.user-usaha');
+			}else{
+				var alertPopup = $ionicPopup.alert({
+			     title: 'Status',
+			     template: 'Password atau email yang anda masukan salah'
+			 });
 			}
 		}).error(function(){}).finally(function(){
+			
 			$scope.loginStatus.text = 'Login';
 			$scope.loginStatus.status = false;
+			
 		});
 
 	}
 
 }])
 
-.controller('registerCtrl', ['$scope', '$stateParams', 'UserData', 'Auth', '$state', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
+.controller('registerCtrl', ['$scope', '$ionicPopup','$stateParams', 'UserData', 'Auth', '$state', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
 // You can include any angular dependencies as parameters for this function
 // TIP: Access Route Parameters for your page via $stateParams.parameterName
-function ($scope, $stateParams, UserData, Auth, $state) {
+function ($scope, $ionicPopup ,$stateParams, UserData, Auth, $state) {
 	
 	$scope.registerStatus = { text : 'Register', status : false};
 
@@ -1596,6 +1657,10 @@ function ($scope, $stateParams, UserData, Auth, $state) {
 		$scope.registerStatus.status = true;
 		UserData.registerUser(data).success(function(data){
 			if(data.status){
+				var alertPopup = $ionicPopup.alert({
+			     title: 'Status',
+			     template: 'Selamat !! anda sudah bisa jadi pengelola'
+			   });
 				Auth.setUser(data.data);
 				$state.go('app.menu');
 			}

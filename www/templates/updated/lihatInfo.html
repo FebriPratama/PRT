@@ -1,9 +1,5 @@
 <ion-view title="Lihat Info" >
 
-    <ion-nav-buttons side="right" class="has-header">
-      <button class="button button-icon icon ion-android-more-horizontal"></button>
-    </ion-nav-buttons>
-
     <div class="tabs-striped tabs-top tabs-background-positive tabs-color-light">
 
       <div class="tabs">
@@ -32,9 +28,9 @@
               <p style="max-height: 62px;max-width: 202px !important;white-space:normal;">{{ data.isi_info }}</p>
 
           <div class="item item-avatar absolute pertama ">
-            <img class="avatarnya" src="https://dummyimage.com/600x400/d3d3d3/000000.jpg&text=?" ng-if="!tmp.photos.length"> 
+            <img class="avatarnya" src="https://dummyimage.com/600x400/d3d3d3/000000.jpg&text=?" ng-if="!data.usaha.img_usaha"> 
 
-            <img class="avatarnya" ng-src="{{ApiEndpoint.main+'img/'+photo.nama_gambar}}" ng-if="tmp.photos.length" ng-show="$index==0" ng-repeat="photo in tmp.photos">
+            <img class="avatarnya" ng-src="{{ApiEndpoint.main+'img/'+data.usaha.img_usaha}}" ng-if="data.usaha.img_usaha">
             <h5>by {{ data.usaha.nama_usaha }}</h5>
             <h6>{{data.created_at}}</h6>
           </div>

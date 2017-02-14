@@ -57,6 +57,16 @@ angular.module('app.routes', [])
       }
     })
 
+     .state('app.user-profil', {
+      url: '/user-profil',
+      views: {
+          'menuContent': {
+              templateUrl: 'templates/updated/user-profil.html',
+              controller : 'MainCtrl'
+          }
+      }
+    })
+
     .state('app.user-usaha-new', {
       url: '/user-usaha-new',
       views: {
@@ -293,21 +303,6 @@ angular.module('app.routes', [])
       }
     })
 
-    .state('app.umum-listtravel', {
-      url: '/listTravel',
-      views: {
-          'menuContent': {
-              templateUrl: 'templates/updated/umum-listTravel.html',
-              controller: 'itemUmumCtrl'
-          }
-      },
-      onEnter: function(UserData,$state){
-        if(!UserData.getDataTmp().nama_usaha){
-          $state.go('app.umum-lihatsekitar');
-        }
-      }
-    })
-
     .state('app.umum-carilokasi', {
       url: '/carilokasi',
       cache : true,
@@ -323,56 +318,6 @@ angular.module('app.routes', [])
         }
       }
     })
-
-    .state('app.umum-listrental', {
-      url: '/listrental',
-      views: {
-          'menuContent': {
-              templateUrl: 'templates/updated/umum-listrental.html',
-              controller: 'itemUmumCtrl'
-          }
-      },
-      onEnter: function(UserData,$state){
-        if(!UserData.getDataTmp().nama_usaha){
-          $state.go('app.umum-lihatsekitar');
-        }
-      }
-    })
-
-    .state('app.umum-listinfo', {
-      url: '/listinfo',
-      views: {
-          'menuContent': {
-              templateUrl: 'templates/updated/umum-listinfo.html',
-              controller: 'itemUmumCtrl'
-          }
-      },
-      onEnter: function(UserData,$state){
-        if(!UserData.getDataTmp().nama_usaha){
-          $state.go('app.umum-lihatsekitar');
-        }
-      }
-    })
-
-    .state('app.umum-detaillisttravel', {
-          url: '/detail-Listtravel',
-          views: {
-              'menuContent': {
-                  templateUrl: 'templates/updated/umum-detilItemTravel.html',
-                controller: 'itemCtrl'
-              }
-          }
-        })
-
-        .state('app.umum-detaillistrental', {
-          url: '/detail-listrental',
-          views: {
-              'menuContent': {
-                  templateUrl: 'templates/updated/umum-detilItemRental.html',
-                  controller: 'itemCtrl'
-              }
-          }
-        })
 
 /*        .state('app.umum-detaillistinfo', {
           url: '/detail-listinfo',
