@@ -456,6 +456,7 @@ function (ApiEndpoint,$ionicModal,$ionicScrollDelegate,$ionicPlatform,$scope, $s
 
 						function fail(e) {
 						  console.error('Error: ', e);
+						  $scope.usahaEditPhoto = { status : false, text : 'Upload' };
 						}
 
 						function success(fileEntry) {
@@ -469,7 +470,7 @@ function (ApiEndpoint,$ionicModal,$ionicScrollDelegate,$ionicPlatform,$scope, $s
 						  }, function(error){
 						  	console.log(error);
 						    $scope.showAlert('Error', error.exception);						    
-
+						    $scope.usahaEditPhoto = { status : false, text : 'Upload' };
 						  });
 
 						};
@@ -491,6 +492,7 @@ function (ApiEndpoint,$ionicModal,$ionicScrollDelegate,$ionicPlatform,$scope, $s
 			      }, function(error){
 			      	console.log(error);
 			        $scope.showAlert('Error', error.exception);
+			        $scope.usahaEditPhoto = { status : false, text : 'Upload' };
 			      });
 
 		      });
@@ -501,6 +503,7 @@ function (ApiEndpoint,$ionicModal,$ionicScrollDelegate,$ionicPlatform,$scope, $s
 		  function(err){
 		    // Not always an error, maybe cancel was pressed...
 		    console.log(err);
+		    $scope.usahaEditPhoto = { status : false, text : 'Upload' };
 
 		  })
 
@@ -984,7 +987,7 @@ function (ApiEndpoint,$ionicModal ,$ionicSlideBoxDelegate, $ionicPlatform, $scop
 
 	};
 
-	$scope.edit = function(data){
+	$scope.editItem = function(data){
 		
 		if(data.waktu_itemtravel) data.waktu_itemtravel = $scope.toDate(data.waktu_itemtravel);
 
@@ -1610,6 +1613,7 @@ function (ApiEndpoint,$ionicModal, $ionicPopup, $scope, $stateParams, UserData, 
 		return url;
 	};
 
+
 	$scope.uploadImage = function(data) {
 		
 		if(!data.isi_info) return false;
@@ -1624,12 +1628,14 @@ function (ApiEndpoint,$ionicModal, $ionicPopup, $scope, $stateParams, UserData, 
 				$scope.feedStatus.text = 'Submitting';
 				$scope.feedStatus.status = true;
 		 	UserData.storeInfo(Auth.getBrandData(),$scope.statusData).success(function(data){
-
+		 		console.log(data);
 		 		if(data.status){
 
 					UserData.setDataStatusSingle(data.data);
 					$scope.statusData = { isi_info : '' };
 					$scope.image = null;	
+					$scope.showAlert('Success', 'Info Posted');
+					$state.go('app.itemInfo');
 
 		 		}
 
@@ -1639,12 +1645,10 @@ function (ApiEndpoint,$ionicModal, $ionicPopup, $scope, $stateParams, UserData, 
 
 				$scope.feedStatus.text = 'Submit';
 				$scope.feedStatus.status = false;
-		 		return true;
 
 		 	});
-
-		 }
-
+			
+		 }else{
 		  // File name only
 		  var filename = $scope.image;
 		  var url = ApiEndpoint.url + 'usaha/feed/'+$scope.brand.id_usaha;
@@ -1670,11 +1674,14 @@ function (ApiEndpoint,$ionicModal, $ionicPopup, $scope, $stateParams, UserData, 
 
 				if(data.status){
 					UserData.setDataStatusSingle(data.data);
-					$scope.statusData = { isi_info : '' };
+					$scope.statusData = { judul_info : '',isi_info : '' };
 					$scope.image = null;
+					$state.go('app.itemInfo');
+					$scope.showAlert('Success', 'Info Posted');
+				}else{
+					$scope.showAlert('Warning', 'Info Failed');
 				}
-
-			    $scope.showAlert('Success', 'Image upload finished.');
+			    
 
 			 }, function(error){
 
@@ -1682,7 +1689,10 @@ function (ApiEndpoint,$ionicModal, $ionicPopup, $scope, $stateParams, UserData, 
 				$scope.feedStatus.text = 'Submit';
 				$scope.feedStatus.status = false;
 
-			 }, options);
+			 }, options);		 	
+		 }
+
+
 
 		});
 
@@ -1746,7 +1756,7 @@ function ($scope, $ionicPopup ,$stateParams, UserData, Auth, $state) {
 			     template: 'Selamat !! anda sudah bisa jadi pengelola'
 			   });
 				Auth.setUser(data.data);
-				$state.go('app.menu');
+				$state.go('app.user-usaha');
 			}
 		}).error(function(){}).finally(function(){
 			$scope.registerStatus.text = 'Register';

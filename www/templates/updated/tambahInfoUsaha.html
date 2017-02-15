@@ -1,18 +1,21 @@
-<ion-view title="Tambah Info Usaha" id="page31" style="">
+<ion-view title="Tambah Info Usaha">
   <ion-content padding="true" class="has-header">
 
-     <form name="formItem" class="list" ng-submit="storeStatus(formItem.$valid,statusData)">
-
-
-        <span class="input-label">Isi Info </span>
-        <label class="item item-input-float">
+     <div class="list">
+      
+        <label class="item item-input">
+          <span class="input-label">Judul Info</span>
+          <input type="text" ng-model="statusData.judul_info" placeholder="Judul Info" required>
+        </label>        
+        <label class="item item-input">
+          <span class="input-label">Isi Info </span>
           <textarea ng-model="statusData.isi_info" style="width: 370px;height: 190px;" required> </textarea>
         </label>  
 
-      <button type="submit" ng-click="loadImage()" class="button button-small button-icon ion-android-attach" ng-disabled="image">
+        <button type="submit" ng-click="loadImage()" class="button button-small button-icon ion-android-attach" ng-disabled="image">
         </button>   
 
-    </form>
+    </div>
 
     <button type="submit" ng-click="uploadImage(statusData)" ng-disabled="formItem.$invalid || feedStatus.status" class="button button-positive button-small button-block">
           {{ feedStatus.text }}

@@ -30,7 +30,7 @@
         <label class="item item-input" id="editPengelola-input15">
           <span class="input-label">Usaha Long : {{ dataUsaha.longitude_usaha }}</span>
         </label>
-        <button ng-click="getLocation()" class="button button-positive button-block">Get Location</button>
+        <a ng-click="getLocation()" class="button button-positive button-block">Get Location</a>
         <button ng-disabled="formUsaha.$invalid || usahaStatus.status" class="button button-positive button-block">{{ usahaStatus.text }}</button>
       </ion-list>
 

@@ -331,6 +331,6 @@ angular.module('app.routes', [])
 
     ;
 
-    $urlRouterProvider.otherwise('/app/lihatInfo');
+    $urlRouterProvider.otherwise('/app/lihatsekitar');
 
 });
