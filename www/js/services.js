@@ -180,14 +180,14 @@ function UserData($http, ApiEndpoint) {
 
     },
 
-    getInfoItem : function(type) {
+    getInfoItem : function(type,page) {
 
         switch(type){
           case 'travel' :
-            return $http.get(ApiEndpoint.url + 'search/travel');
+            return $http.get(ApiEndpoint.url + 'search/travel?page='+page);
           break;
           case 'rental' :
-            return $http.get(ApiEndpoint.url + 'search/rental');
+            return $http.get(ApiEndpoint.url + 'search/rental?page='+page);
           break;
         }
 

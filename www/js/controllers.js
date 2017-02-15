@@ -16,6 +16,98 @@ function ($scope, $stateParams, UserData) {
 
 }])
 
+.controller('pencarianCtrl', ['ApiEndpoint','$ionicModal','$scope', '$stateParams', 'UserData', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
+// You can include any angular dependencies as parameters for this function
+// TIP: Access Route Parameters for your page via $stateParams.parameterName
+function (ApiEndpoint, $ionicModal, $scope, $stateParams, UserData) {
+
+	$scope.ApiEndpoint = ApiEndpoint;
+	$scope.items = [];	
+	$scope.type = 'travel';
+	$scope.page = 1;
+	$scope.tmp = {};
+	$scope.status = true;
+
+	$scope.changeItem = function(type){
+		$scope.status = true;
+		$scope.type = type;
+		$scope.page = 1;
+		$scope.items = [];
+		UserData.getInfoItem(type,$scope.page).success(function(data){
+			$scope.items = data.data;
+		}).error(function(){
+
+		}).finally(function(){
+			$scope.status = false;
+		});
+
+	};
+
+		/* detail travel */
+	  $ionicModal.fromTemplateUrl('modal-detail-travel.html', {
+	    scope: $scope,
+	    animation: 'slide-in-up'
+	  }).then(function(modal) {
+	    $scope.modalTravel = modal;
+	  });
+	  $scope.showDetailTravel = function(data) {
+	  	$scope.tmp = data;
+	    $scope.modalTravel.show();
+	    $scope.edit = false;
+	  };
+	  $scope.closeModalTravel = function() {
+	    $scope.modalTravel.hide();
+	  };
+
+
+	/* detail rental */
+	  $ionicModal.fromTemplateUrl('modal-detail-rental.html', {
+	    scope: $scope,
+	    animation: 'slide-in-up'
+	  }).then(function(modal) {
+	    $scope.modalRental = modal;
+	  });
+	  $scope.showDetailRental = function(data) {
+	  	$scope.tmp = data;
+	    $scope.modalRental.show();
+	    $scope.edit = false;
+	  };
+	  $scope.closeModalRental = function() {
+	    $scope.modalRental.hide();
+	  };
+
+	$scope.loadMore = function(){
+		$scope.status = true;
+		$scope.page = $scope.page + 1;
+		UserData.getInfoItem($scope.type,$scope.page).success(function(data){
+			//$scope.items = data.data;
+			if(!data.data.length) $scope.page = $scope.page > 1 ? $scope.page - 1 : 1;
+
+			for(var i = 0; i < data.data.length;i++){
+				
+				$scope.items.push(data.data[i]);
+
+			}
+		}).error(function(){
+
+		}).finally(function(){
+			$scope.status = false;
+		});
+
+	}
+
+	UserData.getInfoItem($scope.type,$scope.page).success(function(data){
+
+		$scope.items = data.data;
+
+	}).error(function(data){
+
+	}).finally(function(data){
+		$scope.status = false;
+	});
+
+}])
+
 .controller('LihatSekitarCtrl', ['$timeout', '$filter','$scope', '$stateParams', 'UserData', 'Auth', '$state', '$ionicPopup','$ionicHistory',// The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
 // You can include any angular dependencies as parameters for this function
 // TIP: Access Route Parameters for your page via $stateParams.parameterName

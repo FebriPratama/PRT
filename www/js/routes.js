@@ -265,6 +265,7 @@ angular.module('app.routes', [])
       views: {
           'menuContent': {
               templateUrl: 'templates/updated/pencarian.html',
+              controller: 'pencarianCtrl'
           }
       }
     })
