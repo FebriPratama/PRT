@@ -24,15 +24,12 @@
       .ion-ios-pulse-strong2:before {
         content: url('icons/location.png') !important;
       }
-  
-
-
 </style>
 
 
 
   <ion-side-menus enable-menu-with-back-views="false">
-    <ion-side-menu-content drag-content="false">
+    <ion-side-menu-content drag-content="false" >
       <ion-nav-bar class="bar-positive" align-title="center">
           <ion-nav-back-button class="no-text"></ion-nav-back-button>
           <ion-nav-buttons class="" side="left">
@@ -43,7 +40,7 @@
     </ion-side-menu-content>
     
     <ion-side-menu side="left">
-        <ion-header-bar align-title="center" class=" padding-top" style="min-height:150px;background:#8FBC8F;color:#444;">
+        <ion-header-bar align-title="center" class=" padding-top" style="min-height: 120px;background:#8FBC8F;color:#444;">
             <div class="row">
               <div class="col-33 text-center">
                 <img class="kotak bengkok" src="https://dummyimage.com/600x400/red/000000.jpg&text=?" style="width:50px;height:50px;border-radius:50%;">
@@ -58,7 +55,7 @@
               </div>
             </div>            
         </ion-header-bar>
-        <ion-content class="stable-bg has-expanded-header" style="margin-top:50px;" scroll="false">
+        <ion-content class="stable-bg has-expanded-header" style="margin-top:50px;" scroll="true">
           <div class="list">
             <div class="item item-divider">
               Account
@@ -284,19 +281,19 @@
         </div>
 
       <form>
-        <label class="item item-input detil " id="detilItemRental-input42">
+        <label class="item item-input pertama " id="detilItemRental-input42">
             <span class="input-label">Nama Kendaraan </span>
            <p>{{tmp.namakendaraan_itemrental}}</p>
         </label>
-        <label class="item item-input detil" id="detilItemRental-input43">
+        <label class="item item-input tengah" id="detilItemRental-input43">
           <span class="input-label">Jenis Kendaraan</span>
            <p>{{tmp.jeniskendaraan_itemrental}}</p>
         </label>
-        <label class="item item-input detil" id="detilItemRental-input44">
+        <label class="item item-input tengah" id="detilItemRental-input44">
           <span class="input-label">Satuan Sewa </span>
           <p>{{tmp.satuanharga_itemrental}}</p>
         </label>
-        <label class="item item-input detil" id="detilItemRental-input45">
+        <label class="item item-input tengah" id="detilItemRental-input45">
           <span class="input-label">Harga </span>
            <p>{{ tmp.harga_itemrental | currency : 'Rp.'  }}<p>
         </label>

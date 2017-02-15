@@ -37,10 +37,10 @@ function ($timeout, $filter, $scope, $stateParams, UserData, Auth, $state,$ionic
 
 	};
 
-	$scope.map = { center: { latitude: 45, longitude: -73 }, zoom: 13, radius : 0};
+	$scope.map = { center: { latitude: -7.797068, longitude: 110.370529 }, zoom: 10, radius : 0};
 	
 	$scope.circle = { 
-		center: { latitude: 45, longitude: -73 }, radius : 10000, fill: { color: '#08B21F', opacity: 0.3 }, editable : true
+		center: { latitude: -7.797068, longitude: 110.370529 }, radius : 10000, fill: { color: '#08B21F', opacity: 0.3 }, editable : true
 	};
 
 	$scope.getDistance = function(latitude, longitude) {
@@ -54,9 +54,7 @@ function ($timeout, $filter, $scope, $stateParams, UserData, Auth, $state,$ionic
 	};
 
 	$scope.toKm = function(data){
-		
 		return parseFloat(data/1000).toFixed(1);
-
 	}
 
 	$scope.getCurrentLocation = function(){
@@ -813,12 +811,6 @@ function (ApiEndpoint, $timeout, uiGmapGoogleMapApi, uiGmapIsReady, $ionicPlatfo
 		            	
     }
 
-/*    $timeout(function(){
-    	
-    	$scope.getFrom();
-        $scope.printRoute();
-
-    },2000);*/
 
 }])
 

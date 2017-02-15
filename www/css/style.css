@@ -49,16 +49,6 @@
             min-height: 183px;
         }
 
-        .gambarusaha {
-                display: block;
-                margin: 33px 31% !important;
-                max-width: 129px !important;
-                max-height:129px !important;
-                width:100% !important;
-                height: 100% !important;
-                border-radius: 50% !important;
-        }
-
         .tab-detilusaha {
           top: 253px;
           right: 0%;

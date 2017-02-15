@@ -10,8 +10,8 @@
       <ion-item class="item-thumbnail-left" ng-repeat="data in items track by $index" ng-click="showDetailTravel(data)">
         <img src="https://dummyimage.com/600x400/000/fff&text=" ng-if="!data.photos.length"> 
         <img ng-src="{{ApiEndpoint.main+'img/'+photo.nama_gambar}}" ng-show="$index==0" ng-if="data.photos.length" ng-repeat="photo in data.photos">
-        <h2>Tujuan: Yogyakarta - {{ data.tujuan_itemtravel }}</h2>
-        <p>Jadwal : {{data.waktu_itemtravel}}</p>
+        <p style="font-size:13px;width: 196px;">Tujuan: Yogyakarta - {{ data.tujuan_itemtravel }}</p>
+        <p style="font-size:13px;width: 196px;">Jadwal : {{data.waktu_itemtravel}}</p>
           <ion-option-button class="button-assertive icon ion-trash-a " ng-click="deleteItem(data)"> Delete </ion-option-button>
          <ion-option-button class="button-blue icon ion-edit" ng-click="edit(data)"> Edit </ion-option-button> 
       </ion-item>
